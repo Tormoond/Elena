@@ -1,0 +1,11 @@
+The site and both scripts are already set up for lenasorochenk@gmail.com and +420 728 345 904, so there was nothing new to change. I checked the files again just now:
+
+Site: the contact form loads book/consultation-form.js. It sends the name, email, phone, preferred time, service, message and language.
+Google script: book/google-apps-script.gs adds a row to the "Заявки" sheet, sends a WhatsApp message to +420728345904 and sends a backup email to lenasorochenk@gmail.com.
+Nothing has been sent to Google or WhatsApp yet. The connection needs these steps in Elena's Google account, which I can't sign in to from here:
+
+Signed in as lenasorochenk@gmail.com, create a new Google Sheet, then go to Extensions → Apps Script. Replace the code there with the contents of google-apps-script.gs and save.
+Run testSubmission and allow the permissions Google asks for. A "Заявки" sheet with a test row should appear, and a test email should arrive.
+Go to Deploy → New deployment → Web app. Set "Execute as" to Me and "Who has access" to Anyone, then copy the URL that ends in /exec.
+To turn on WhatsApp, follow the instructions on callmebot.com to get a free key for the phone with +420 728 345 904. Then add it in Apps Script under Project Settings → Script Properties, with the name CALLMEBOT_APIKEY. Run testSubmission again and a WhatsApp message should arrive.
+Send me the /exec URL from step 3. I'll put it into the site and run a live test that checks a row reaches the sheet.
