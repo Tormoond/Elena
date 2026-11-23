@@ -1,0 +1,9 @@
+# old web-designer version (invented content, stock photos) - kept locally only
+index.backup-*.html
+# throwaway screenshot copies
+_*.html
+# editor / OS
+.vscode/
+.claude/
+Thumbs.db
+desktop.ini

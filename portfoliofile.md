@@ -25,6 +25,13 @@ Use this as the starting brief for the next portfolio or one-page site.
 | 14 | Copyright line, move "Scroll up" | "© 2026 Elena. All rights reserved. · Created with love in the Czech Republic". The nav button was removed; the footer button now shows on desktop too (compact pill). |
 | 15 | Mobile CTA: email and button on one line | At ≤768px: `.cta-mail` uses `clamp(18px,6.4vw,30px)` + `nowrap`; `#cta .btn` uses `clamp(14px,4.4vw,17px)` with padding `14px 20px`. Checked at 320 and 390px. |
 | 16 | Remove the email from the CTA section | Removed the `.cta-mail` link and its CSS. The button got `margin-top:var(--s4)` to keep the spacing. The email still appears in the mobile menu, the contact block and the footer. |
+| 17 | Consultation form → Google Sheet + WhatsApp | `#contact-form` now posts to a Google Apps Script web app (`book/google-apps-script.gs`) through `book/consultation-form.js`: a row in the "Заявки" sheet, a WhatsApp message to **+420 728 345 904** via CallMeBot, and a backup email to lenasorochenk@gmail.com. New optional fields: phone/WhatsApp and preferred call time (EN/UA/CZ), a honeypot field and a status line. **Waiting on deployment** (see §7). |
+| 18 | New email and phone everywhere | Email → **lenasorochenk@gmail.com**, phone/WhatsApp → **+420 728 345 904** (`wa.me/420728345904`) in the mobile menu, contact block, footer and both `book/` scripts. The site and the WhatsApp notifications now use the same number. |
+| 19 | Site phone back to 256 152; date field; logo scrolls up | Site WhatsApp → **+420 728 256 152** (`wa.me/420728256152`). WhatsApp **notifications still go to +420 728 345 904** (`DEFAULT_WHATSAPP_PHONE` in the `.gs`). "Preferred call time" restyled to match the custom dropdown: a calendar badge (fills with accent when focused or filled), a chevron, the whole field opens the picker, muted empty state, and `appearance:none` + `min-width:0` so it never overflows on phones. Phone and date are now full width (side by side cut off the time). Clicking the ELENA logo (`#hero`) scrolls to the top via `lenis.scrollTo(0)`. |
+| 20 | Booking-style call-time picker | The client supplied a React + framer-motion booking widget. It was rebuilt in vanilla JS in the site style, replacing the native `datetime-local` field (see §4.12). |
+| 21 | Book up to a month ahead | The picker now lists every weekday up to one month ahead instead of 10 days. The month name follows the scroll position. |
+| 22 | Make the site load fast | Two resized copies of every gallery photo: `photo/thumbs/` (720px, q80) and `photo/thumbs-sm/` (420px, q78). Page images use `srcset` + `sizes`; the fans and the lightbox strip use the 420px copies; the lightbox itself still opens the originals. The hero image is preloaded with `fetchpriority=high`. Font Awesome CSS no longer blocks the first paint; CDNs are preconnected; Jost 300 was dropped. **First load: 5.8 MB → 1.2 MB on phones, 1.6 MB on desktop.** Also fixed a load bug (see §4.10): the page opened scrolled down to the contact form. |
+| 23 | Push to GitHub | Repo: **github.com/Tormoond/Elena-portfolio--2** (branch `main`). The form scripts, thumbnails and speed work went in a second commit. `.gitignore` keeps the old web-designer backup and throwaway `_*.html` copies out. |
 
 **Key decision:** the site must show the **real work**. Invented stats, testimonials and stock photos were removed rather than reworded.
 
@@ -45,9 +52,9 @@ footer (columns, "Scroll up" pill, copyright "…in the Czech Republic")
 lightbox (thumbnails, arrows, swipe, Esc, focus trap)
 ```
 
-Current contact facts: **kornienko.lena.k@gmail.com** · WhatsApp **+420-728-256-152** · **Plzeň, Czech Republic** · Instagram **@elena.sketch** · Mon–Fri 9:00–18:00 CET.
+Current contact facts: **lenasorochenk@gmail.com** · WhatsApp **+420 728 256 152** (form notifications go to +420 728 345 904) · **Plzeň, Czech Republic** · Instagram **@elena.sketch** · Mon–Fri 9:00–18:00 CET.
 
-Stack: one static `index.html` with no build step. CDN libraries: Lenis 1.0.42, GSAP 3.12.2, AOS 2.3.1, Font Awesome 6.4. Fonts: Cormorant Garamond for headings, Jost for body text.
+Stack: one static `index.html` with no build step, plus `book/consultation-form.js` (form → Google Apps Script). Images: originals in `photo/<project>/`, 720px copies in `photo/thumbs/`, 420px copies in `photo/thumbs-sm/`. CDN libraries: Lenis 1.0.42, GSAP 3.12.2, AOS 2.3.1, Font Awesome 6.4. Fonts: Cormorant Garamond for headings, Jost for body text.
 Palette: terracotta `#C8693D`, cream `#F7F1E8` / `#FBF6EF`, dark `#171210`.
 
 ---
@@ -97,6 +104,7 @@ Palette: terracotta `#C8693D`, cream `#F7F1E8` / `#FBF6EF`, dark `#171210`.
 - **A hero taller than the screen (phones):** set `hero.style.top = min(0, innerHeight - heroH)` so it scrolls to its bottom before pinning.
 - Progress `p = clamp((scrollY - max(0,H-V)) / min(V,H))`. The hero content gets `translateY(-60p) scale(1-.08p)` and opacity `1-.55p`; the shade overlay gets `.8p`.
 - Set `visibility:hidden` when p = 1 so the hidden hero isn't painted.
+- **Links to `#hero` must scroll to 0 explicitly.** A sticky element's offset is wherever it is pinned, so `lenis.scrollTo(hero)` barely moves.
 
 ### 4.6 Mobile menu
 - Shown at ≤1080px. Tablets need it too, because the nav links are hidden from 1080px down.
@@ -133,6 +141,7 @@ Palette: terracotta `#C8693D`, cream `#F7F1E8` / `#FBF6EF`, dark `#171210`.
 - Wrap it in a `div.field`, not a `<label>`, or clicking the label focuses the hidden select.
 - Add a button (`aria-haspopup="listbox"`, `aria-expanded`) plus `ul[role=listbox]` with `li[role=option][aria-selected]`, built **from the native options**. Icons come from `data-icon` on each `<option>`.
 - `cselectSync()` rebuilds the list. Call it from `render()` (language change) and after any code that sets `selectedIndex` (the "Ask about this" links).
+- **Never call `scrollIntoView` on the options** to keep the active one visible. On load the list is hidden, so the browser scrolls the **whole page** to the form (the site opened at the contact section). Adjust `list.scrollTop` instead, and only while the list is open.
 - Keyboard: ↑/↓/Home/End move `.active` with `aria-activedescendant`; Enter/Space selects; Esc and Tab close; clicking outside closes.
 - Style: cream panel, radius 12px, soft shadow, fade plus slide-in. The selected option is solid accent with a ✓. Remove the focus outline on the list itself (`.cselect-list:focus{outline:0}`), or it doubles the border.
 
@@ -141,6 +150,24 @@ Palette: terracotta `#C8693D`, cream `#F7F1E8` / `#FBF6EF`, dark `#171210`.
 - Keep form labels **left-aligned**, because they're easier to read and fill in.
 - Separate the details from the form with a thin top border on the form.
 
+
+### 4.13 Page speed
+- **Images are the weight.** The originals are Telegram JPEGs (1280px, 150–380 KB). Make resized copies with PowerShell `System.Drawing` (HighQualityBicubic + JPEG quality encoder), in parallel folders that keep the same names: `photo/thumbs/<dir>/` 720px, `photo/thumbs-sm/<dir>/` 420px.
+- `<img src=thumb srcset="thumb 720w, original 1280w" sizes="…">`, with `sizes` matched to the layout (wide card 58vw, mid 42vw, small 34vw, all 100vw on phones). Keep `width`/`height` so there's no layout shift, and use `loading="lazy" decoding="async"` below the fold.
+- JS gallery paths: `src(p,i,t)`, where t=1 → `thumbs/`, t=2 → `thumbs-sm/`, and no t → the original (lightbox stage only).
+- Preload the hero (LCP) image with `imagesrcset`/`imagesizes` and `fetchpriority="high"`.
+- Non-blocking icon CSS: `<link rel="preload" as="style" onload="this.rel='stylesheet'">` plus a `<noscript>` fallback. Keep the AOS CSS blocking, or animated blocks flash before they hide.
+- **Measure** with a tiny local Node static server (`path.resolve` the root, or Windows paths fail the `startsWith` check), then sum `performance.getEntriesByType("resource")` `encodedBodySize` in headless Edge. `file://` reports 0 bytes.
+- Headless screenshots of the full page can come out blank. Check `scrollY` first: here it was the real bug above.
+
+### 4.12 Call-time picker (from a React/framer-motion widget, no libraries)
+- Markup: `div.field#dp` (not a `<label>`, because it holds buttons) with a month header + ‹ › buttons, `.dp-days` strip, `.dp-times` grid, `.dp-pick` summary, and a **hidden `input name="date"`** holding `YYYY-MM-DDTHH:MM`, so the Apps Script didn't change.
+- Days: **every weekday from tomorrow up to one month ahead** (about 22 days), labelled with `Intl.DateTimeFormat` in the current language (capitalised, trailing "." stripped). Slots 09–12 and 14–17 Czech time; they are the same every day because there is no real availability data.
+- framer-motion → CSS: `layoutId` pill = an absolute `.dp-pill` moved via `left`/`width` with the language-pill overshoot curve; `AnimatePresence` = a `.out` class (fade up, 160ms) and then a rebuild; staggered slots = `animation-delay: calc(var(--i)*40ms)`; summary reveal = a `grid-template-rows: 0fr → 1fr` transition.
+- The month header follows the **first visible day** while scrolling (November → December).
+- The strip scrolls sideways (`data-lenis-prevent`, hidden scrollbar, snap). The ‹ › buttons page by 80% and disable at the ends, and they hide when everything fits.
+- `window.dpSync()` is called from `render()`, so the days relabel on language change.
+- Screenshot it with `*{transition:none!important;animation:none!important}` in the throwaway copy, or the pill and slots are captured mid-animation.
 ---
 
 ## 5. Design rules applied (from the Owl-Listener skills pack)
@@ -193,11 +220,12 @@ Palette: terracotta `#C8693D`, cream `#F7F1E8` / `#FBF6EF`, dark `#171210`.
 - [ ] **Barcelona leftovers** (EN/UA/CZ): the `<title>` and meta description, the About text ("I work from Barcelona…"), the line under the CTA button (`cta.re`) and the footer tagline (`foot.tag`). Ask whether all of them should say Plzeň.
 - [ ] The "www.elenadesigns.com" link in the contact block points to the old domain. Remove it or replace it.
 - [ ] The stats block still says "Designer, from first sketch to final drawing" (`fact.4`). Decide whether it should match the new About heading.
-- [ ] The contact form only shows a thank-you message. Connect Formspree or a similar service.
+- [ ] **Deploy the form backend** (logged in as lenasorochenk@gmail.com): create a Google Sheet → Extensions → Apps Script → paste `book/google-apps-script.gs` → run `testSubmission` once to grant permissions → Deploy → Web app (Execute as: Me, Who has access: Anyone) → paste the `/exec` URL into `SCRIPT_URL` in `book/consultation-form.js`. For WhatsApp, get a CallMeBot key for +420 728 345 904 and save it as the Script Property `CALLMEBOT_APIKEY`. After any change to the `.gs` file, redeploy as a **new version** of the same deployment, or the URL keeps running the old code.
 - [ ] The footer Behance and LinkedIn links are `#`. They need real URLs.
 - [ ] `photo/elena.webp` (old cut-out portrait) is unused and can be deleted. `photo/POTFOLIO PHOTO.png` is the source of `elena-portrait.jpg`. `index.backup-webdesigner.html` holds the old version.
 - [ ] Ask Elena to confirm the project titles and descriptions, which were inferred from the images.
-- [ ] Possible next step: sharing previews (`og:image`) and a favicon.
+- [ ] Possible next step: sharing previews (`og:image`) and a favicon. More speed: WebP/AVIF copies (needs a real encoder; System.Drawing can't write WebP) and self-hosting the fonts/libraries.
+- [ ] When new photos are added, regenerate both thumbnail folders (same script, `-Max 720 -Q 80` and `-Max 420 -Q 78`).
 - [x] Done: Plzeň location, WhatsApp, new email, hero label, About heading, copyright line, wave dividers, custom dropdown, footer "Scroll up".
 
 ---

@@ -7,9 +7,14 @@
 <meta name="description" content="Elena designs and draws interiors and buildings: homes, hotels, cafés and guesthouses. Interior design, architectural visualization and rendered floor plans. Barcelona, working worldwide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preload" as="image" href="photo/thumbs/pansion/photo_2026-11-21_18-13-40.jpg" imagesrcset="photo/thumbs/pansion/photo_2026-11-21_18-13-40.jpg 521w, photo/pansion/photo_2026-11-21_18-13-40.jpg 927w" imagesizes="(max-width:768px) 84vw, 40vw" fetchpriority="high">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 <style>
 :root{
   --dark:#1C1714; --dark2:#171210; --dark3:#120E0C;
@@ -253,6 +258,55 @@ form label{font-size:14px;font-weight:500;color:var(--dark);display:grid;gap:6px
 form input,form select,form textarea{font:inherit;font-size:16px;color:var(--text);padding:14px;border:1px solid #d9ccc0;border-radius:8px;background:#fff;transition:border-color .25s,box-shadow .25s;width:100%}
 form input:focus,form select:focus,form textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.18)}
 form textarea{min-height:130px;resize:vertical}
+.f-row{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s2)}
+form label,.f-row>*{min-width:0}
+/* call-time picker (days strip + time slots) */
+.dp-card{display:grid;gap:12px;padding:12px;border:1px solid #d9ccc0;border-radius:12px;background:#fff;min-width:0;transition:border-color .25s,box-shadow .25s}
+.dp-card:hover{border-color:var(--accent-soft)}
+.dp-card:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.18)}
+.dp-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 2px}
+.dp-month{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--dark);line-height:1.2}
+.dp-nav{display:flex;gap:6px}
+.dp-nav button{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--accent);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color .2s,color .2s,border-color .2s,opacity .2s}
+.dp-nav button:hover:not(:disabled),.dp-nav button:focus-visible{background:var(--accent);border-color:var(--accent);color:#fff;outline:0}
+.dp-nav button:disabled{opacity:.35;cursor:default}
+.dp-nav.none{display:none}
+.dp-days{position:relative;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.dp-days::-webkit-scrollbar{display:none}
+.dp-pill{position:absolute;top:0;bottom:0;left:0;width:0;border-radius:12px;background:var(--accent);box-shadow:0 8px 18px -6px rgba(var(--accent-rgb),.6);pointer-events:none}
+.dp-days.ready .dp-pill{transition:left .5s cubic-bezier(.34,1.56,.64,1),width .5s cubic-bezier(.34,1.56,.64,1)}
+.dp-day{position:relative;z-index:1;flex:1 0 56px;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center;padding:8px 2px;border:0;border-radius:12px;background:transparent;font:inherit;color:var(--dark);cursor:pointer;transition:color .25s,background-color .2s}
+.dp-day:hover{background:rgba(var(--accent-rgb),.08)}
+.dp-day[aria-pressed=true]{background:transparent;color:#fff}
+.dp-day:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.dp-day small{font-size:10.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;line-height:1.5;color:var(--muted);transition:color .25s}
+.dp-day[aria-pressed=true] small{color:rgba(255,255,255,.82)}
+.dp-day b{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.05;font-variant-numeric:lining-nums}
+.dp-sub{display:flex;align-items:center;gap:8px;margin:0;font-size:13px;font-weight:400;color:var(--muted)}
+.dp-sub i{color:var(--accent)}
+.dp-times{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;transition:opacity .16s,transform .16s}
+.dp-times.out{opacity:0;transform:translateY(-8px)}
+.dp-time{padding:10px 2px;border:1px solid transparent;border-radius:10px;background:var(--cream2);font:inherit;font-size:15px;font-weight:500;color:var(--text);cursor:pointer;font-variant-numeric:tabular-nums;animation:dpIn .45s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(var(--i) * 40ms);transition:background-color .2s,border-color .2s,color .2s,transform .15s}
+.dp-time:hover{background:var(--paper)}
+.dp-time:active{transform:scale(.94)}
+.dp-time:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.dp-time[aria-pressed=true]{background:rgba(var(--accent-rgb),.1);border-color:var(--accent);color:var(--accent-deep);box-shadow:0 4px 12px -6px rgba(var(--accent-rgb),.5)}
+@keyframes dpIn{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:none}}
+.dp-pick{display:grid;grid-template-rows:0fr;opacity:0;margin-top:-12px;transition:grid-template-rows .45s var(--ease),opacity .3s,margin-top .45s var(--ease)}
+.dp.has-val .dp-pick{grid-template-rows:1fr;opacity:1;margin-top:0}
+.dp-pick>div{overflow:hidden;min-height:0}
+.dp-pick-in{display:flex;align-items:center;gap:12px;padding:10px 8px 10px 10px;border-radius:10px;background:rgba(var(--accent-rgb),.08)}
+.dp-pick-ico{width:32px;height:32px;flex:none;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px}
+.dp-pick-txt{display:grid;min-width:0;line-height:1.3}
+.dp-pick-txt small{font-size:12px;font-weight:400;color:var(--muted)}
+.dp-pick-txt b{font-size:15px;font-weight:500;color:var(--dark)}
+.dp-clear{margin-left:auto;flex:none;width:34px;height:34px;border:0;border-radius:50%;background:transparent;color:var(--muted);cursor:pointer;transition:background-color .2s,color .2s}
+.dp-clear:hover,.dp-clear:focus-visible{background:rgba(var(--accent-rgb),.14);color:var(--accent-deep);outline:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.f-hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+#form-status{font-size:14px;text-align:center;color:var(--muted);min-height:1.4em}
+#form-status.is-error{color:#b03a2e}
+form .btn[disabled]{opacity:.6;pointer-events:none}
 
 /* custom "What do you need?" dropdown */
 .field{display:grid;gap:6px;font-size:14px;font-weight:500;color:var(--dark)}
@@ -403,6 +457,9 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
   .c-line.big{font-size:18px;margin-top:var(--s3);flex-wrap:wrap;gap:10px}
   #contact-form{padding-top:var(--s5);border-top:1px solid var(--line)}
   #contact-form .btn{min-height:54px}
+  .dp-card{padding:10px}
+  .dp-day{flex:0 0 54px}
+  .dp-time{font-size:14px}
   #cta .btn{font-size:clamp(14px,4.4vw,17px);padding:14px 20px;gap:8px;text-wrap:balance;max-width:100%}
   .f-grid{grid-template-columns:1fr}
   .lb{grid-template-columns:1fr 1fr;grid-template-rows:64px 1fr auto auto}
@@ -415,6 +472,7 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
   .lb-title small{display:block;margin:2px 0 0}
 }
 @media(prefers-reduced-motion:reduce){
+  .dp-time{animation:none}.dp-days.ready .dp-pill{transition:none}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 </style>
@@ -465,7 +523,7 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
       <button type="button" data-lang="cs" aria-pressed="false">Čeština</button>
     </div>
     <a href="#contact" class="btn btn-fill"><span data-i18n="nav.cta">Discuss a project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-    <a class="mm-mail" href="mailto:kornienko.lena.k@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>kornienko.lena.k@gmail.com</a>
+    <a class="mm-mail" href="mailto:lenasorochenk@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>lenasorochenk@gmail.com</a>
   </div>
 </div>
 
@@ -483,10 +541,10 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
     </div>
     <div class="hero-art">
       <button type="button" class="hero-main" data-project="lake" data-index="1" aria-label="Open Mountain Lake Retreat" style="border:0;padding:0;cursor:pointer;background:var(--dark)">
-        <img src="photo/pansion/photo_2026-11-21_18-13-40.jpg" alt="Timber guesthouse above a mountain lake, painted visualization" width="927" height="1280" fetchpriority="high">
+        <img src="photo/thumbs/pansion/photo_2026-11-21_18-13-40.jpg" srcset="photo/thumbs/pansion/photo_2026-11-21_18-13-40.jpg 521w, photo/pansion/photo_2026-11-21_18-13-40.jpg 927w" sizes="(max-width:768px) 84vw, 40vw" alt="Timber guesthouse above a mountain lake, painted visualization" width="927" height="1280" fetchpriority="high">
       </button>
       <button type="button" class="hero-plan" data-project="plans" data-index="0" aria-label="Open Rendered Floor Plans" style="padding:0;cursor:pointer;background:var(--cream)">
-        <img src="photo/2d%20plans/photo_2026-11-21_18-13-26.jpg" alt="Rendered floor plan of a two-bedroom apartment" width="1280" height="926">
+        <img src="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-26.jpg" srcset="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-26.jpg 720w, photo/2d%20plans/photo_2026-11-21_18-13-26.jpg 1280w" sizes="(max-width:768px) 46vw, 20vw" alt="Rendered floor plan of a two-bedroom apartment" width="1280" height="926">
       </button>
       <div class="hero-badge"><i class="fa-solid fa-circle" aria-hidden="true"></i><span data-i18n="hero.badge">Booking 2027 projects</span></div>
       <div class="hero-tag t1"><small data-i18n="hero.tagk">Featured</small><span data-i18n="pj.lake.t">Mountain Lake Retreat</span></div>
@@ -520,31 +578,31 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
     </div>
     <div class="work-grid">
       <button type="button" class="card wide" data-project="hotel" data-aos="fade-up">
-        <div class="card-media"><img src="photo/hotel/photo_2026-11-21_18-13-14.jpg" alt="Terraced hotel balconies overlooking a beach and pools" loading="lazy" width="1280" height="839">
+        <div class="card-media"><img src="photo/thumbs/hotel/photo_2026-11-21_18-13-14.jpg" srcset="photo/thumbs/hotel/photo_2026-11-21_18-13-14.jpg 720w, photo/hotel/photo_2026-11-21_18-13-14.jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 58vw" alt="Terraced hotel balconies overlooking a beach and pools" loading="lazy" width="1280" height="839" decoding="async">
           <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>6</span>
           <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
         <div class="card-body"><span class="card-cat" data-i18n="pj.hotel.c">Hospitality · Architecture &amp; interiors</span><h3 data-i18n="pj.hotel.t">Seaside Resort Hotel</h3><p data-i18n="pj.hotel.d">A terraced beach hotel: the masterplan, pool gardens, the lobby lounge and a double-height suite.</p></div>
       </button>
       <button type="button" class="card mid" data-project="h92" data-aos="fade-up" data-aos-delay="80">
-        <div class="card-media"><img src="photo/Hotel%2092/photo_2026-11-21_18-14-04.jpg" alt="Hotel 92 bar with dark wood, bottles and an arched window" loading="lazy" width="1014" height="1280" style="object-position:center 30%">
+        <div class="card-media"><img src="photo/thumbs/Hotel%2092/photo_2026-11-21_18-14-04.jpg" srcset="photo/thumbs/Hotel%2092/photo_2026-11-21_18-14-04.jpg 570w, photo/Hotel%2092/photo_2026-11-21_18-14-04.jpg 1014w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 42vw" alt="Hotel 92 bar with dark wood, bottles and an arched window" loading="lazy" width="1014" height="1280" style="object-position:center 30%" decoding="async">
           <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>6</span>
           <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
         <div class="card-body"><span class="card-cat" data-i18n="pj.h92.c">Hospitality · Interiors</span><h3 data-i18n="pj.h92.t">Hotel 92</h3><p data-i18n="pj.h92.d">A boutique hotel in a brick townhouse, with a bar, a bakery café and a library lounge.</p></div>
       </button>
       <button type="button" class="card" data-project="lake" data-aos="fade-up">
-        <div class="card-media"><img src="photo/pansion/photo_2026-11-21_18-13-40%20(2).jpg" alt="Aerial view of a guesthouse village on a mountain lake" loading="lazy" width="1280" height="927">
+        <div class="card-media"><img src="photo/thumbs/pansion/photo_2026-11-21_18-13-40%20(2).jpg" srcset="photo/thumbs/pansion/photo_2026-11-21_18-13-40%20(2).jpg 720w, photo/pansion/photo_2026-11-21_18-13-40%20(2).jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 34vw" alt="Aerial view of a guesthouse village on a mountain lake" loading="lazy" width="1280" height="927" decoding="async">
           <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>6</span>
           <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
         <div class="card-body"><span class="card-cat" data-i18n="pj.lake.c">Hospitality · Architecture</span><h3 data-i18n="pj.lake.t">Mountain Lake Retreat</h3><p data-i18n="pj.lake.d">A guesthouse village on a mountain lake: the site plan, timber cabins and glass-walled common rooms.</p></div>
       </button>
       <button type="button" class="card" data-project="wood" data-aos="fade-up" data-aos-delay="80">
-        <div class="card-media"><img src="photo/home%20in%20wood/photo_2026-11-21_18-13-38.jpg" alt="Modern two-storey house among misty pine trees" loading="lazy" width="1280" height="777">
+        <div class="card-media"><img src="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-38.jpg" srcset="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-38.jpg 720w, photo/home%20in%20wood/photo_2026-11-21_18-13-38.jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 34vw" alt="Modern two-storey house among misty pine trees" loading="lazy" width="1280" height="777" decoding="async">
           <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>7</span>
           <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
         <div class="card-body"><span class="card-cat" data-i18n="pj.wood.c">Residential · Architecture &amp; interiors</span><h3 data-i18n="pj.wood.t">House in the Forest</h3><p data-i18n="pj.wood.d">A family house on a wooded slope, shown in section, from the terrace and room by room.</p></div>
       </button>
       <button type="button" class="card" data-project="plans" data-aos="fade-up" data-aos-delay="160">
-        <div class="card-media"><img src="photo/2d%20plans/photo_2026-11-21_18-13-27.jpg" alt="Rendered floor plan of a house with garage and open living area" loading="lazy" width="1280" height="926">
+        <div class="card-media"><img src="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-27.jpg" srcset="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-27.jpg 720w, photo/2d%20plans/photo_2026-11-21_18-13-27.jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 34vw" alt="Rendered floor plan of a house with garage and open living area" loading="lazy" width="1280" height="926" decoding="async">
           <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>11</span>
           <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
         <div class="card-body"><span class="card-cat" data-i18n="pj.plans.c">Plans · Apartments &amp; houses</span><h3 data-i18n="pj.plans.t">Rendered Floor Plans</h3><p data-i18n="pj.plans.d">Apartments and houses drawn from above, furnished and textured so every room reads at a glance.</p></div>
@@ -586,7 +644,7 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
           <li><i class="fa-solid fa-check" aria-hidden="true"></i><span data-i18n="svc.s1d">Two rounds of revisions included</span></li>
         </ul>
         <a href="#contact" class="more" data-svc="0" data-i18n="svc.more">Ask about this →</a>
-        <div class="feat-img"><img src="photo/home%20in%20wood/photo_2026-11-21_18-13-37.jpg" alt="Living room with a cream sofa, marble wall and dark blue shelving" loading="lazy" width="1280" height="775"></div>
+        <div class="feat-img"><img src="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-37.jpg" srcset="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-37.jpg 720w, photo/home%20in%20wood/photo_2026-11-21_18-13-37.jpg 1280w" sizes="(max-width:768px) 100vw, 40vw" alt="Living room with a cream sofa, marble wall and dark blue shelving" loading="lazy" width="1280" height="775" decoding="async"></div>
       </article>
       <article class="service-card" data-aos="fade-up" data-aos-delay="80">
         <div class="icon-box"><i class="fa-solid fa-mug-saucer" aria-hidden="true"></i></div>
@@ -633,7 +691,7 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
 <section id="about" class="on-dark">
   <div class="wrap about-grid">
     <div class="about-photo" data-aos="fade-up">
-      <img src="photo/elena-portrait.jpg" alt="Portrait of Elena" data-i18n-alt="about.alt" loading="lazy" width="587" height="785">
+      <img src="photo/elena-portrait.jpg" alt="Portrait of Elena" data-i18n-alt="about.alt" loading="lazy" decoding="async" width="587" height="785">
       <div class="about-sign">Elena<small data-i18n="about.role">Interior designer</small></div>
     </div>
     <div class="about-copy">
@@ -674,8 +732,8 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
       <div class="c-info">
         <h3 data-i18n="contact.ready">Have a space in mind?</h3>
         <p data-i18n="contact.area">Based in Plzeň, working with homeowners, architects and hotels across Europe and beyond.</p>
-        <a class="c-line big" href="mailto:kornienko.lena.k@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>kornienko.lena.k@gmail.com</a>
-        <a class="c-line" href="https://wa.me/420728256152" target="_blank" rel="noopener" aria-label="WhatsApp +420 728 256 152"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>+420-728-256-152</a>
+        <a class="c-line big" href="mailto:lenasorochenk@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>lenasorochenk@gmail.com</a>
+        <a class="c-line" href="https://wa.me/420728256152" target="_blank" rel="noopener" aria-label="WhatsApp +420 728 256 152"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>+420 728 256 152</a>
         <a class="c-line" href="https://www.elenadesigns.com"><i class="fa-solid fa-globe" aria-hidden="true"></i>www.elenadesigns.com</a>
         <a class="c-line" href="https://instagram.com/elena.sketch"><i class="fa-brands fa-instagram" aria-hidden="true"></i>@elena.sketch</a>
         <p class="c-line"><i class="fa-regular fa-clock" aria-hidden="true"></i><span data-i18n="contact.hours">Mon to Fri, 9:00 to 18:00 CET</span></p>
@@ -684,6 +742,28 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
       <form id="contact-form">
         <label><span data-i18n="form.name">Full name</span><input type="text" name="name" required autocomplete="name"></label>
         <label><span data-i18n="form.email">Email</span><input type="email" name="email" required autocomplete="email"></label>
+        <div class="f-row">
+          <label><span data-i18n="form.phone">Phone or WhatsApp (optional)</span><input type="tel" name="phone" autocomplete="tel"></label>
+          <div class="field dp" id="dp">
+            <span id="dp-label" data-i18n="form.date">Preferred call time (optional)</span>
+            <div class="dp-card">
+              <div class="dp-head"><span class="dp-month"></span><span class="dp-nav">
+                <button type="button" class="dp-prev"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><span class="sr" data-i18n="form.prev">Earlier dates</span></button>
+                <button type="button" class="dp-next"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i><span class="sr" data-i18n="form.next">Later dates</span></button>
+              </span></div>
+              <div class="dp-days" role="group" aria-labelledby="dp-label" data-lenis-prevent><span class="dp-pill" aria-hidden="true"></span></div>
+              <p class="dp-sub"><i class="fa-regular fa-clock" aria-hidden="true"></i><span data-i18n="form.slots">Available times · Czech time</span></p>
+              <div class="dp-times" role="group" aria-labelledby="dp-label"></div>
+              <div class="dp-pick" aria-live="polite"><div><div class="dp-pick-in">
+                <span class="dp-pick-ico" aria-hidden="true"><i class="fa-regular fa-calendar-check"></i></span>
+                <span class="dp-pick-txt"><small data-i18n="form.picked">Your call</small><b class="dp-pick-val"></b></span>
+                <button type="button" class="dp-clear"><i class="fa-solid fa-xmark" aria-hidden="true"></i><span class="sr" data-i18n="form.clear">Clear</span></button>
+              </div></div></div>
+            </div>
+            <input type="hidden" name="date" id="dp-value">
+          </div>
+        </div>
+        <div class="f-hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="field">
           <span id="service-label" data-i18n="form.service">What do you need?</span>
           <select name="service" id="service" class="native-select" tabindex="-1" aria-hidden="true">
@@ -702,6 +782,7 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
         </div>
         <label><span data-i18n="form.msg">Tell me about the space (optional)</span><textarea name="message"></textarea></label>
         <button class="btn btn-fill" type="submit"><span data-i18n="form.send">Send my request →</span></button>
+        <p id="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
@@ -722,7 +803,7 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
       <li><a href="#services" data-i18n="svc.s3h">Architectural Visualization</a></li>
       <li><a href="#services" data-i18n="pj.plans.t">Rendered Floor Plans</a></li></ul></div>
     <div><h4 data-i18n="foot.contact">Contact</h4><ul>
-      <li><a href="mailto:kornienko.lena.k@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>kornienko.lena.k@gmail.com</a></li>
+      <li><a href="mailto:lenasorochenk@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>lenasorochenk@gmail.com</a></li>
       <li><a href="https://instagram.com/elena.sketch"><i class="fa-brands fa-instagram" aria-hidden="true"></i>@elena.sketch</a></li>
       <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span data-i18n="contact.loc">Plzeň, Czech Republic</span></li></ul></div>
     <div><h4 data-i18n="foot.links">Quick links</h4><ul>
@@ -762,7 +843,7 @@ const PROJECTS={
   plans:{dir:'2d plans',files:['18-13-26','18-13-27','18-13-27 (2)','18-13-28','18-13-30','18-13-31 (2)','18-13-31','18-13-32','18-13-33','18-13-34','18-14-00']},
   int:{dir:'oter works',files:['18-13-44 (2)','18-13-45','18-13-46','18-13-47 (2)','18-13-47','18-13-48','18-13-49 (2)','18-13-49','18-13-50','18-13-51','18-13-52 (2)','18-13-52','18-13-53','18-13-54','18-13-55 (2)','18-13-55','18-13-57','18-13-58','18-13-59','18-14-00 (2)','18-14-02']}
 };
-const src=(p,i)=>encodeURI(`photo/${PROJECTS[p].dir}/photo_2026-11-21_${PROJECTS[p].files[i]}.jpg`);
+const src=(p,i,t)=>encodeURI(`photo/${t===2?'thumbs-sm/':t?'thumbs/':''}${PROJECTS[p].dir}/photo_2026-11-21_${PROJECTS[p].files[i]}.jpg`);
 
 /* interiors: 3 fanned stacks of 7 cards */
 const fans=document.getElementById('fans'), PER=7, total=PROJECTS.int.files.length;
@@ -776,7 +857,7 @@ for(let g=0;g<Math.ceil(total/PER);g++){
     b.dataset.project='int'; b.dataset.index=k;
     b.style.setProperty('--i',i); b.style.setProperty('--z',10-Math.abs(i));
     b.setAttribute('aria-label',`Interior ${k+1} of ${total}`);
-    b.innerHTML=`<img src="${src('int',k)}" alt="" loading="lazy">`;
+    b.innerHTML=`<img src="${src('int',k,2)}" alt="" loading="lazy" decoding="async">`;
     stack.appendChild(b);
   }
   // touch screens have no hover: first tap fans the stack out, the next tap opens the photo
@@ -825,7 +906,7 @@ uk:{
 "about.btn":"Розкажіть про свій простір",
 "cta.label":"Готові почати?","cta.h":"Намалюймо ваш простір ще до будівництва.","cta.sub":"Надішліть план, фото або просто ідею. Ви отримаєте безкоштовну 30-хвилинну розмову та чітку пропозицію протягом тижня.","cta.btn":"Записатися на безкоштовну розмову","cta.re":"Відповідаю протягом робочого дня · Фіксована ціна · Барселона",
 "contact.h":"Зв'язатися","contact.ready":"Маєте простір, який хочете змінити?","contact.area":"Я в Пльзені та працюю з власниками житла, архітекторами й готелями по всій Європі й за її межами.","contact.hours":"Пн–Пт, 9:00–18:00 CET","contact.loc":"Пльзень, Чехія",
-"form.name":"Ім'я та прізвище","form.email":"Email","form.service":"Що вам потрібно?","form.notsure":"Ще не знаю","form.msg":"Розкажіть про простір (необов'язково)","form.send":"Надіслати запит →",
+"form.name":"Ім'я та прізвище","form.email":"Email","form.service":"Що вам потрібно?","form.notsure":"Ще не знаю","form.phone":"Телефон або WhatsApp (необов'язково)","form.slots":"Вільний час · за чеським часом","form.prev":"Раніші дати","form.next":"Пізніші дати","form.picked":"Ваш дзвінок","form.clear":"Очистити","form.date":"Зручний час для дзвінка (необов'язково)","form.msg":"Розкажіть про простір (необов'язково)","form.send":"Надіслати запит →",
 "foot.tag":"Дизайн інтер'єрів і архітектурна візуалізація. Намальовано з душею в Барселоні.","foot.svc":"Послуги","foot.contact":"Контакти","foot.links":"Швидкі посилання","foot.home":"Головна","foot.copy":"© 2026 Олена. Усі права захищені. · Створено з любов'ю в Чехії"
 },
 cs:{
@@ -860,7 +941,7 @@ cs:{
 "about.btn":"Povězte mi o svém prostoru",
 "cta.label":"Připraveni začít?","cta.h":"Nakresleme váš prostor dřív, než se postaví.","cta.sub":"Pošlete mi půdorys, fotku nebo jen nápad. Získáte bezplatný 30minutový hovor a jasnou nabídku do týdne.","cta.btn":"Domluvit úvodní hovor zdarma","cta.re":"Odpovídám do jednoho pracovního dne · Pevná cena · Barcelona",
 "contact.h":"Kontakt","contact.ready":"Máte na mysli nějaký prostor?","contact.area":"Sídlím v Plzni a pracuji s majiteli domů, architekty a hotely po celé Evropě i mimo ni.","contact.hours":"Po–Pá, 9:00–18:00 SEČ","contact.loc":"Plzeň, Česká republika",
-"form.name":"Celé jméno","form.email":"E-mail","form.service":"Co potřebujete?","form.notsure":"Zatím nevím","form.msg":"Povězte mi o prostoru (nepovinné)","form.send":"Odeslat poptávku →",
+"form.name":"Celé jméno","form.email":"E-mail","form.service":"Co potřebujete?","form.notsure":"Zatím nevím","form.phone":"Telefon nebo WhatsApp (nepovinné)","form.slots":"Volné časy · český čas","form.prev":"Dřívější termíny","form.next":"Pozdější termíny","form.picked":"Váš hovor","form.clear":"Zrušit výběr","form.date":"Preferovaný čas hovoru (nepovinné)","form.msg":"Povězte mi o prostoru (nepovinné)","form.send":"Odeslat poptávku →",
 "foot.tag":"Návrhy interiérů a architektonické vizualizace. Kresleno s duší v Barceloně.","foot.svc":"Služby","foot.contact":"Kontakt","foot.links":"Rychlé odkazy","foot.home":"Domů","foot.copy":"© 2026 Elena. Všechna práva vyhrazena. · Vytvořeno s láskou v České republice"
 }};
 const MARQUEE={
@@ -868,9 +949,6 @@ const MARQUEE={
   uk:['Дизайн інтер\'єрів','Архітектурна візуалізація','Кольорові плани','Готелі й пансіонати','Кав\'ярні й бари','Будинки й квартири','Приймаю проєкти на 2027','English · Українська · Čeština'],
   cs:['Návrhy interiérů','Architektonická vizualizace','Barevné půdorysy','Hotely a penziony','Kavárny a bary','Domy a byty','Volné termíny na rok 2027','English · Українська · Čeština']
 };
-const FORM_OK={en:['Got it, thank you.','I\'ll reply within one working day, usually with a few questions about the space.'],
-  uk:['Отримала, дякую!','Відповім протягом робочого дня, зазвичай із кількома запитаннями про простір.'],
-  cs:['Mám to, děkuji.','Odpovím do jednoho pracovního dne, obvykle s pár otázkami k prostoru.']};
 
 const texts=[...document.querySelectorAll('[data-i18n]')], alts=[...document.querySelectorAll('[data-i18n-alt]')];
 const EN={title:document.title};
@@ -893,6 +971,7 @@ function render(){
   buildMarquee();
   placePills();
   if(window.cselectSync) cselectSync();
+  if(window.dpSync) dpSync();
   if(lb.classList.contains('open')) show(cur.i);
 }
 function placePills(){
@@ -943,7 +1022,7 @@ function show(i){
 }
 function openLb(p,i){
   cur.p=p; lastFocus=document.activeElement;
-  lbThumbs.innerHTML=PROJECTS[p].files.map((_,k)=>`<button type="button" data-k="${k}" aria-label="${k+1}"><img src="${src(p,k)}" alt="" loading="lazy"></button>`).join('');
+  lbThumbs.innerHTML=PROJECTS[p].files.map((_,k)=>`<button type="button" data-k="${k}" aria-label="${k+1}"><img src="${src(p,k,2)}" alt="" loading="lazy" decoding="async"></button>`).join('');
   show(i||0);
   lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.classList.add('lb-lock');
   if(lenis) lenis.stop();
@@ -992,6 +1071,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
   const id=a.getAttribute('href'); if(id.length<2) return;
   const el=document.querySelector(id); if(!el) return;
   e.preventDefault(); setMenu(false);
+  if(id==='#hero'){ if(lenis) lenis.scrollTo(0,{duration:1.4}); else scrollTo({top:0,behavior:reduce?'auto':'smooth'}); return; }
   if(a.dataset.svc){ const s=document.getElementById('service'); if(s){ s.selectedIndex=+a.dataset.svc; if(window.cselectSync) cselectSync(); } }
   if(lenis) lenis.scrollTo(el,{offset:-60}); else el.scrollIntoView({behavior:reduce?'auto':'smooth'});
 }));
@@ -1153,7 +1233,11 @@ document.querySelectorAll('.counter').forEach(c=>cio.observe(c));
     active=(i+os.length)%os.length;
     os.forEach((li,k)=>li.classList.toggle('active',k===active));
     list.setAttribute('aria-activedescendant','cs-opt-'+active);
-    os[active].scrollIntoView({block:'nearest'});
+    // scroll only inside the open list: scrollIntoView here would jump the whole page to the form on load
+    if(!wrap.classList.contains('open')) return;
+    const li=os[active];
+    if(li.offsetTop<list.scrollTop) list.scrollTop=li.offsetTop;
+    else if(li.offsetTop+li.offsetHeight>list.scrollTop+list.clientHeight) list.scrollTop=li.offsetTop+li.offsetHeight-list.clientHeight;
   }
   function open(){
     wrap.classList.add('open'); btn.setAttribute('aria-expanded','true');
@@ -1189,13 +1273,88 @@ document.querySelectorAll('.counter').forEach(c=>cio.observe(c));
   build();
 })();
 
-/* ---------- form ---------- */
-const form=document.getElementById('contact-form');
-form.addEventListener('submit',function(e){
-  e.preventDefault();
-  const [a,b]=FORM_OK[lang];
-  form.innerHTML=`<div class="form-ok" role="status"><i class="fa-regular fa-circle-check" aria-hidden="true"></i><p>${a}</p><p>${b}</p></div>`;
-});
+/* ---------- call-time picker ---------- */
+(function(){
+  const root=document.getElementById('dp'); if(!root) return;
+  const daysEl=root.querySelector('.dp-days'), pill=root.querySelector('.dp-pill'), timesEl=root.querySelector('.dp-times');
+  const valEl=root.querySelector('.dp-pick-val'), input=document.getElementById('dp-value');
+  const SLOTS=['09:00','10:00','11:00','12:00','14:00','15:00','16:00','17:00']; // Mon–Fri, Czech time
+  const days=[]; const d=new Date(); d.setHours(12,0,0,0);
+  const end=new Date(d); end.setMonth(end.getMonth()+1); // bookable up to one month ahead
+  while(d<end){ d.setDate(d.getDate()+1); if(d.getDay()%6) days.push(new Date(d)); }
+  let sel=0, time=null;
+  const loc=()=>({uk:'uk-UA',cs:'cs-CZ'})[document.documentElement.lang]||'en-GB';
+  const fmt=(o,x)=>{const s=new Intl.DateTimeFormat(loc(),o).format(x).replace(/\.$/,'');return s.charAt(0).toUpperCase()+s.slice(1);};
+  const iso=x=>x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');
+  const dayBtns=()=>[...daysEl.querySelectorAll('.dp-day')];
+  const monthEl=root.querySelector('.dp-month'), nav=root.querySelector('.dp-nav'), prev=root.querySelector('.dp-prev'), next=root.querySelector('.dp-next');
+  function navState(){
+    const max=daysEl.scrollWidth-daysEl.clientWidth;
+    nav.classList.toggle('none',max<2);
+    prev.disabled=daysEl.scrollLeft<2; next.disabled=daysEl.scrollLeft>max-2;
+    setMonth();
+  }
+  const page=dir=>daysEl.scrollBy({left:dir*daysEl.clientWidth*.8,behavior:reduce?'auto':'smooth'});
+  prev.addEventListener('click',()=>page(-1)); next.addEventListener('click',()=>page(1));
+  daysEl.addEventListener('scroll',navState,{passive:true});
+  function setMonth(){ // month of the first visible day
+    const bs=dayBtns(); let i=bs.findIndex(b=>b.offsetLeft+b.offsetWidth/2>daysEl.scrollLeft); if(i<0) i=sel;
+    const x=days[i]; monthEl.textContent=fmt({month:'long'},x)+' '+x.getFullYear();
+  }
+
+  function buildDays(){
+    dayBtns().forEach(b=>b.remove());
+    days.forEach((x,i)=>{
+      const b=document.createElement('button'); b.type='button'; b.className='dp-day';
+      b.setAttribute('aria-pressed',i===sel);
+      b.setAttribute('aria-label',fmt({weekday:'long',day:'numeric',month:'long'},x));
+      b.innerHTML='<small>'+fmt({weekday:'short'},x)+'</small><b>'+x.getDate()+'</b><small>'+fmt({month:'short'},x)+'</small>';
+      b.addEventListener('click',()=>pickDay(i));
+      daysEl.appendChild(b);
+    });
+    placePill(); setMonth(); navState();
+  }
+  function placePill(){
+    const b=dayBtns()[sel]; if(!b) return;
+    pill.style.left=b.offsetLeft+'px'; pill.style.width=b.offsetWidth+'px';
+  }
+  function buildTimes(){
+    timesEl.innerHTML='';
+    SLOTS.forEach((t,i)=>{
+      const b=document.createElement('button'); b.type='button'; b.className='dp-time'; b.textContent=t;
+      b.style.setProperty('--i',i); b.setAttribute('aria-pressed',t===time);
+      b.addEventListener('click',()=>{ time=t; timesEl.querySelectorAll('.dp-time').forEach(x=>x.setAttribute('aria-pressed',x===b)); update(); });
+      timesEl.appendChild(b);
+    });
+  }
+  function pickDay(i){
+    if(i===sel) return;
+    sel=i; time=null; setMonth();
+    dayBtns().forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
+    placePill();
+    const b=dayBtns()[i];
+    daysEl.scrollTo({left:b.offsetLeft-(daysEl.clientWidth-b.offsetWidth)/2,behavior:reduce?'auto':'smooth'});
+    update();
+    if(reduce){ buildTimes(); return; }
+    timesEl.classList.add('out');
+    setTimeout(()=>{ buildTimes(); timesEl.classList.remove('out'); },160);
+  }
+  function update(){
+    input.value=time?iso(days[sel])+'T'+time:'';
+    root.classList.toggle('has-val',!!time);
+    if(time) valEl.textContent=fmt({weekday:'long',day:'numeric',month:'long'},days[sel])+' · '+time;
+  }
+  root.querySelector('.dp-clear').addEventListener('click',()=>{
+    time=null; timesEl.querySelectorAll('.dp-time').forEach(x=>x.setAttribute('aria-pressed','false')); update();
+  });
+  window.dpSync=()=>{ buildDays(); update(); };
+  buildDays(); buildTimes(); update();
+  requestAnimationFrame(()=>requestAnimationFrame(()=>daysEl.classList.add('ready')));
+  addEventListener('resize',()=>{placePill();navState();});
+  if(document.fonts) document.fonts.ready.then(()=>{placePill();navState();});
+})();
+/* form: see book/consultation-form.js */
 </script>
+<script src="book/consultation-form.js"></script>
 </body>
 </html>
