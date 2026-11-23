@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cards Fan-Out Animation</title>
+<style>
+  body { margin: 0; background: #0b0a1f; font-family: system-ui, sans-serif; }
+
+  /* ===== СЕКЦІЯ: копіюйте звідси ===== */
+  .cards-section {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .stack {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 460px;
+  }
+
+  /* Код з відео */
+  .card {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 240px; height: 340px;
+    margin-left: -120px;
+    margin-top: -170px;
+    border-radius: 24px;
+    padding: 25px;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+    transform-origin: 50% 100%;
+    transition:
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.6s ease, filter 0.6s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    cursor: pointer;
+    will-change: transform;
+  }
+
+  /* Розкриття віялом (--i від -2 до 2) */
+  .stack:hover .card,
+  .stack.open .card {
+    transform:
+      translateX(calc(var(--i) * 85px))
+      translateY(calc(var(--i) * var(--i) * 12px))
+      rotate(calc(var(--i) * 12deg));
+  }
+
+  /* Наведена картка виїжджає вгору, інші тьмяніють */
+  .stack:hover .card:hover {
+    transform:
+      translateX(calc(var(--i) * 85px))
+      translateY(-40px)
+      rotate(calc(var(--i) * 6deg))
+      scale(1.06);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+    z-index: 10;
+  }
+  .stack:hover .card:not(:hover) { filter: brightness(0.7) saturate(0.9); }
+
+  .card .num {
+    position: absolute; top: 20px; right: 22px;
+    font-size: 12px; opacity: .7;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 26px; }
+  .card p  { margin: 0; font-size: 13px; opacity: .85; line-height: 1.4; }
+
+  /* Кольори */
+  .c1 { --i: -2; background: linear-gradient(160deg, #ff4d6d, #b3123a); }
+  .c2 { --i: -1; background: linear-gradient(160deg, #7b2ff7, #2a0a6b); }
+  .c3 { --i:  0; background: linear-gradient(160deg, #3cc8ff, #0a5cff); z-index: 3; }
+  .c4 { --i:  1; background: linear-gradient(160deg, #1fd47a, #0b7a4a); }
+  .c5 { --i:  2; background: linear-gradient(160deg, #ffb020, #f27a0a); }
+
+  @media (max-width: 600px) {
+    .stack:hover .card, .stack.open .card {
+      transform:
+        translateX(calc(var(--i) * 48px))
+        translateY(calc(var(--i) * var(--i) * 8px))
+        rotate(calc(var(--i) * 12deg)) scale(.8);
+    }
+  }
+  /* ===== кінець секції ===== */
+</style>
+</head>
+<body>
+
+<section class="cards-section">
+  <div class="stack" id="stack">
+    <div class="card c1"><span class="num">01</span><div><h3>Creative</h3><p>Build beautiful and creative digital experiences.</p></div></div>
+    <div class="card c2"><span class="num">02</span><div><h3>Design</h3><p>Shape ideas into elegant interfaces.</p></div></div>
+    <div class="card c3"><span class="num">03</span><div><h3>Explore</h3><p>Interactive experiences.</p></div></div>
+    <div class="card c4"><span class="num">04</span><div><h3>Web</h3><p>Build powerful web apps.</p></div></div>
+    <div class="card c5"><span class="num">05</span><div><h3>Learn</h3><p>Learn, grow your skills.</p></div></div>
+  </div>
+</section>
+
+<script>
+  // Для телефонів (немає hover): тап розкриває/згортає віяло
+  const stack = document.getElementById('stack');
+  stack.addEventListener('click', () => stack.classList.toggle('open'));
+</script>
+</body>
+</html>

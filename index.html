@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elena · Interior Designer in Barcelona</title>
+<meta name="description" content="Elena designs and draws interiors and buildings: homes, hotels, cafés and guesthouses. Interior design, architectural visualization and rendered floor plans. Barcelona, working worldwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --dark:#1C1714; --dark2:#171210; --dark3:#120E0C;
+  --accent:#C8693D; --accent-rgb:200,105,61; --accent-deep:#A9532C; --accent-soft:#E9A27C;
+  --olive:#6F7A45; --cream:#F7F1E8; --cream2:#FBF6EF; --paper:#F2E9DC;
+  --text:#2B211C; --muted:#6E6057; --line:rgba(43,33,28,.12);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  /* type scale: 1.333 ratio, fluid */
+  --fs-display:clamp(44px,6.2vw,80px);
+  --fs-h2:clamp(34px,4.2vw,54px);
+  --fs-h3:clamp(24px,2.2vw,30px);
+  --fs-body:18px; --fs-small:15px; --fs-label:13px;
+  /* spacing scale (8pt) */
+  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px; --s7:96px; --s8:128px;
+  --radius:14px;
+  --wave-h:clamp(34px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+html.lenis{height:auto}.lenis.lenis-smooth{scroll-behavior:auto}
+body{font-family:var(--sans);font-size:var(--fs-body);line-height:1.7;color:var(--text);background:var(--cream2);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1240px,100% - 48px);margin-inline:auto}
+section{position:relative;z-index:1;overflow-x:clip}
+.skip{position:absolute;left:-999px;top:8px;z-index:2000;background:#fff;color:var(--dark);padding:8px 14px;border-radius:6px}
+.skip:focus{left:8px}
+
+/* labels + headings */
+.label{display:inline-flex;align-items:center;gap:12px;font-size:var(--fs-label);font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+.label::before{content:'';width:28px;height:2px;background:var(--accent);flex:none}
+.on-dark .label{color:var(--accent-soft)}.on-dark .label::before{background:var(--accent-soft)}
+.h-sec{font-family:var(--serif);font-weight:600;font-size:var(--fs-h2);line-height:1.08;letter-spacing:-.01em;margin:var(--s2) 0}
+.sub{font-size:var(--fs-body);max-width:58ch;color:var(--muted)}
+.on-dark .sub{color:rgba(255,255,255,.72)}
+.center{text-align:center}.center .sub{margin-inline:auto}
+.sec-head{margin-bottom:var(--s6)}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:6px;font-size:16px;font-weight:500;overflow:hidden;isolation:isolate;transition:color .3s,border-color .3s;cursor:pointer;border:0;font-family:var(--sans);min-height:48px}
+.btn::before{content:'';position:absolute;inset:0;z-index:-1;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.btn:hover::before{transform:scaleX(1)}
+.btn-fill{background:var(--accent);color:#fff}
+.btn-fill::before{background:var(--accent-deep)}
+.btn-line{border:1px solid rgba(255,255,255,.6);color:#fff}
+.btn-line::before{background:#fff}.btn-line:hover{color:var(--dark)}
+
+/* progress */
+#scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:1100}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:80px;display:flex;align-items:center;transition:height .3s,background-color .3s,box-shadow .3s;color:#fff}
+#nav.scrolled{height:64px;background:rgba(23,18,16,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(0,0,0,.18)}
+#nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:.14em}
+.brand small{font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.2em;opacity:.6;margin-left:2px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.nav-links{display:flex;gap:30px;list-style:none;font-size:15px}
+.nav-links a{position:relative;padding:4px 0}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);transform-origin:left}
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-right .btn{padding:10px 20px;font-size:14px;min-height:40px}
+.lang{position:relative;display:flex;border:1px solid rgba(255,255,255,.25);border-radius:100px;padding:3px;isolation:isolate}
+.lang button{position:relative;z-index:1;background:none;border:0;color:inherit;font:500 11px var(--sans);letter-spacing:.1em;padding:6px 10px;border-radius:100px;cursor:pointer;opacity:.7;transition:opacity .3s,color .3s}
+.lang button:hover{opacity:1}
+.lang button[aria-pressed=true]{opacity:1;color:#fff}
+.lang-pill{position:absolute;z-index:0;top:3px;bottom:3px;left:3px;width:0;border-radius:100px;background:var(--accent);box-shadow:0 4px 14px rgba(var(--accent-rgb),.45)}
+.lang.ready .lang-pill{transition:left .55s cubic-bezier(.34,1.56,.64,1),width .55s cubic-bezier(.34,1.56,.64,1)}
+.lang.bump .lang-pill{animation:pillBump .55s ease}
+@keyframes pillBump{0%{transform:scale(1)}35%{transform:scale(1.14,.82)}70%{transform:scale(.97,1.05)}100%{transform:scale(1)}}
+.burger{display:none;width:44px;height:44px;position:relative;background:none;border:0;cursor:pointer;z-index:1002}
+.burger span{position:absolute;left:7px;width:30px;height:2px;background:#fff;transition:.35s var(--ease)}
+.burger span:nth-child(1){top:13px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:29px}
+.menu-open .burger span:nth-child(1){top:21px;transform:rotate(45deg)}
+.menu-open .burger span:nth-child(2){opacity:0}
+.menu-open .burger span:nth-child(3){top:21px;transform:rotate(-45deg)}
+#mobile-menu{position:fixed;inset:0;z-index:1001;background:radial-gradient(ellipse 80% 50% at 100% 0%,rgba(var(--accent-rgb),.22),transparent 70%),var(--dark2);color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:104px 24px 32px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.menu-open #mobile-menu{opacity:1;visibility:visible}
+.mm-links{display:flex;flex-direction:column}
+.mm-links a{display:flex;align-items:baseline;gap:16px;font-family:var(--serif);font-size:clamp(32px,9vw,46px);line-height:1.25;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);opacity:0;transform:translateY(18px);transition:opacity .5s var(--ease),transform .5s var(--ease),color .2s}
+.mm-links a small{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--accent-soft);min-width:22px}
+.mm-links a:hover{color:var(--accent-soft)}
+.menu-open .mm-links a{opacity:1;transform:none;transition-delay:calc(var(--d) * 60ms + 120ms)}
+.mm-foot{display:grid;gap:18px;opacity:0;transform:translateY(18px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.menu-open .mm-foot{opacity:1;transform:none;transition-delay:.45s}
+.mm-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.lang.lang-lg{width:max-content;max-width:100%}
+.lang.lang-lg button{font-size:14px;letter-spacing:.02em;padding:10px 14px}
+.mm-foot .btn{justify-content:center}
+.mm-mail{display:flex;gap:10px;align-items:center;color:rgba(255,255,255,.75);font-size:15px}
+.mm-mail i{color:var(--accent-soft)}
+.menu-open #nav{z-index:1003;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.menu-open .nav-right>.lang,.menu-open .nav-right>.btn{opacity:0;pointer-events:none}
+@media(min-width:1081){#mobile-menu{display:none}}
+
+/* HERO */
+#hero{position:sticky;top:0;z-index:0;min-height:100vh;min-height:100svh;color:#fff;display:flex;align-items:center;background:var(--dark2);overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 78% 45%,rgba(var(--accent-rgb),.28),transparent 70%),radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px) 0 0/28px 28px}
+.hero-inner{will-change:transform,opacity;transform-origin:50% 30%;position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s6);align-items:center;padding:128px 0 96px}
+.hero-headline{font-family:var(--serif);font-weight:600;font-size:var(--fs-display);line-height:1.04;margin:var(--s3) 0;letter-spacing:-.015em}
+.hero-headline em{color:var(--accent-soft);font-style:italic}
+.hero-sub{font-size:20px;color:rgba(255,255,255,.82);line-height:1.6;max-width:50ch}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:var(--s5)}
+.hero-art{position:relative;height:min(640px,72vh);min-height:460px}
+.hero-main{position:absolute;top:0;right:0;width:78%;height:100%;border-radius:200px 200px var(--radius) var(--radius);overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.hero-main img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.hero-plan{position:absolute;left:0;bottom:8%;width:46%;aspect-ratio:1280/926;border-radius:10px;overflow:hidden;border:6px solid var(--cream);box-shadow:0 30px 60px -20px rgba(0,0,0,.7);transform:rotate(-4deg)}
+.hero-plan img{width:100%;height:100%;object-fit:cover}
+.hero-tag{position:absolute;z-index:3;background:rgba(18,14,12,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-left:3px solid var(--accent);padding:10px 16px;border-radius:8px;font-size:13px;line-height:1.35}
+.hero-tag small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.hero-tag.t1{right:4%;bottom:5%}
+.hero-badge{position:absolute;top:22px;right:-6px;z-index:3;background:var(--cream);color:var(--dark);font-size:13px;font-weight:600;padding:8px 16px;border-radius:100px;display:flex;align-items:center;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.hero-badge i{color:#4e9a4e;font-size:8px}
+.scroll-cue{position:absolute;left:50%;bottom:24px;z-index:3;transform:translateX(-50%);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-cue::after{content:'';width:1px;height:36px;background:linear-gradient(rgba(255,255,255,.5),transparent);animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* MARQUEE */
+.hero-shade{position:absolute;inset:0;z-index:4;background:#0c0908;opacity:0;pointer-events:none}
+.marquee{position:relative;z-index:2;border-radius:28px 28px 0 0;box-shadow:0 -24px 60px -12px rgba(0,0,0,.55);margin-top:-1px;background:var(--accent);color:#fff;padding:14px 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;animation:marquee 40s linear infinite}
+.marquee-track span{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:500;padding-right:8px}
+.marquee-track span::after{content:'·';margin-left:14px;opacity:.7}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* FACTS */
+#facts{background:var(--cream);padding:var(--s6) 0}
+.facts{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:var(--s1) var(--s3);border-left:1px solid var(--line)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact .num{font-variant-numeric:lining-nums;font-family:var(--serif);font-weight:700;font-size:56px;line-height:1;color:var(--dark)}
+.fact .lbl{margin-top:var(--s1);font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);max-width:22ch}
+
+/* WORK */
+#work{background:var(--cream2);padding:var(--s7) 0}
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s3)}
+.card{grid-column:span 4;position:relative;display:block;width:100%;text-align:left;background:none;border:0;padding:0;cursor:pointer}
+.card.wide{grid-column:span 7}.card.mid{grid-column:span 5}
+.card-media{position:relative;overflow:hidden;border-radius:var(--radius);aspect-ratio:4/3;background:var(--paper)}
+.card.wide .card-media,.card.mid .card-media{aspect-ratio:auto;height:440px}
+.card-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.card:hover .card-media img,.card:focus-visible .card-media img{transform:scale(1.04)}
+.card-count{position:absolute;top:14px;right:14px;background:rgba(18,14,12,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-size:13px;padding:5px 12px;border-radius:100px;display:flex;gap:7px;align-items:center}
+.card-open{position:absolute;left:14px;bottom:14px;background:var(--cream);color:var(--dark);font-size:13px;font-weight:500;padding:8px 14px;border-radius:100px;display:flex;gap:8px;align-items:center;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s var(--ease)}
+.card:hover .card-open,.card:focus-visible .card-open{opacity:1;transform:none}
+.card-body{padding:var(--s2) 2px 0}
+.card-cat{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);font-weight:500}
+.card h3{font-family:var(--serif);font-size:var(--fs-h3);font-weight:600;line-height:1.15;color:var(--dark);margin:4px 0 6px}
+.card p{font-size:var(--fs-small);color:var(--muted);line-height:1.6;max-width:52ch}
+
+/* interiors strip */
+.strip-wrap{grid-column:1/-1;margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid var(--line)}
+.strip-head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--s3);margin-bottom:var(--s3)}
+.strip-head h3{font-family:var(--serif);font-size:var(--fs-h3);font-weight:600;color:var(--dark);line-height:1.15;margin:4px 0 6px}
+.strip-head p{font-size:var(--fs-small);color:var(--muted);max-width:56ch}
+/* cards fan-out: 3 stacks x 7 cards, spread across the full width */
+.fans{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s4)}
+.fan{display:flex;flex-direction:column;align-items:center}
+.fan-stack{position:relative;width:100%;aspect-ratio:100/72;container-type:inline-size}
+.fan-card{position:absolute;left:50%;top:50%;width:38cqw;aspect-ratio:5/7;margin-left:-19cqw;margin-top:-29cqw;
+  border:0;padding:0;border-radius:14px;overflow:hidden;cursor:pointer;background:var(--paper);
+  border:4px solid #fff;z-index:var(--z);
+  transform-origin:50% 100%;
+  transform:rotate(calc(var(--i) * 1.2deg)) translateY(calc(var(--i) * -1px));
+  transition:transform .8s cubic-bezier(.22,1,.36,1),box-shadow .6s ease,filter .6s ease;
+  box-shadow:0 18px 36px -12px rgba(43,33,28,.45);will-change:transform}
+.fan-card img{width:100%;height:100%;object-fit:cover}
+.fan-stack:hover .fan-card,.fan-stack:focus-within .fan-card,.fan-stack.open .fan-card{
+  transform:translateX(calc(var(--i) * 6.5cqw)) translateY(calc(var(--i) * var(--i) * .9cqw)) rotate(calc(var(--i) * 4deg))}
+.fan-stack .fan-card:hover,.fan-stack .fan-card:focus-visible{
+  transform:translateX(calc(var(--i) * 6.5cqw)) translateY(-6cqw) rotate(calc(var(--i) * 2deg)) scale(1.08)!important;
+  box-shadow:0 30px 60px -14px rgba(43,33,28,.6);z-index:20}
+.fan-stack:hover .fan-card:not(:hover){filter:brightness(.82) saturate(.9)}
+.fan-cap{margin-top:var(--s1);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* SERVICES */
+#services{background:linear-gradient(180deg,var(--dark3),var(--dark));color:#fff;padding:var(--s7) 0}
+.svc-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:var(--s3)}
+.service-card{position:relative;padding:var(--s4);border-radius:var(--radius);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);overflow:hidden;transition:border-color .3s,background-color .3s}
+.service-card:hover{border-color:rgba(var(--accent-rgb),.5);background:rgba(255,255,255,.06)}
+.service-card.featured{grid-row:span 3;background:rgba(var(--accent-rgb),.12);border-color:rgba(var(--accent-rgb),.35);display:flex;flex-direction:column;padding:var(--s5) var(--s5) 0}
+.popular{position:absolute;top:22px;right:22px;background:var(--accent);color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:.1em;padding:4px 10px;border-radius:100px;font-weight:600}
+.icon-box{width:52px;height:52px;border-radius:12px;background:rgba(var(--accent-rgb),.14);border:1px solid rgba(var(--accent-rgb),.3);display:flex;align-items:center;justify-content:center;margin-bottom:var(--s3)}
+.icon-box i{font-size:22px;color:var(--accent-soft)}
+.service-card h3{font-family:var(--serif);font-size:var(--fs-h3);font-weight:600;line-height:1.2;margin-bottom:10px}
+.service-card.featured h3{font-size:clamp(30px,3vw,38px)}
+.service-card p{font-size:var(--fs-small);line-height:1.65;color:rgba(255,255,255,.7);max-width:52ch}
+.service-card ul{list-style:none;margin:var(--s3) 0;display:grid;gap:10px;font-size:var(--fs-small);color:rgba(255,255,255,.85)}
+.service-card ul i{color:var(--accent-soft);margin-right:10px;font-size:12px}
+.more{display:inline-block;margin-top:var(--s2);color:var(--accent-soft);font-size:14px;font-weight:500}
+.more:hover{text-decoration:underline;text-underline-offset:4px}
+.feat-img{margin:var(--s4) calc(-1 * var(--s5)) 0;flex:1;min-height:200px;border-top:1px solid rgba(var(--accent-rgb),.3);overflow:hidden}
+.feat-img img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+
+/* PROCESS */
+#process{background:#fff;padding:var(--s7) 0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);counter-reset:step}
+.process-step{position:relative;padding-top:var(--s3);border-top:1px solid var(--line)}
+.process-step::before{content:'';position:absolute;top:-1px;left:0;width:48px;height:2px;background:var(--accent)}
+.step-num{font-variant-numeric:lining-nums;font-family:var(--serif);font-weight:700;font-size:48px;line-height:1;color:var(--accent)}
+.process-step h3{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--dark);margin:var(--s2) 0 var(--s1)}
+.process-step p{font-size:var(--fs-small);color:var(--muted);line-height:1.7}
+
+/* ABOUT */
+#about{background:var(--dark2);color:#fff;padding:var(--s7) 0}
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:var(--s7);align-items:center}
+.about-photo{position:relative;aspect-ratio:4/5;border-radius:220px 220px var(--radius) var(--radius);background:linear-gradient(170deg,#E9C9A8 0%,var(--accent) 75%,#8E4523 100%);overflow:hidden}
+.about-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.about-sign{position:absolute;right:16px;bottom:36px;background:var(--cream);color:var(--dark);border-radius:10px;padding:12px 18px;box-shadow:0 20px 40px -10px rgba(0,0,0,.5);font-family:var(--serif);font-size:22px;font-style:italic;font-weight:600}
+.about-sign small{display:block;font-family:var(--sans);font-style:normal;font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.about-copy p.lead{font-size:20px;color:rgba(255,255,255,.82);line-height:1.65;max-width:54ch;margin-bottom:var(--s4)}
+.checks{list-style:none;display:grid;gap:14px;margin-bottom:var(--s5)}
+.checks li{display:flex;gap:14px;align-items:flex-start;font-size:17px;line-height:1.5;color:rgba(255,255,255,.9)}
+.ck{width:26px;height:26px;flex:none;border-radius:50%;background:rgba(var(--accent-rgb),.15);border:1px solid rgba(var(--accent-rgb),.4);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.ck i{font-size:11px;color:var(--accent-soft)}
+
+/* CTA */
+#cta{background:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(180deg,var(--cream),#F1E4D3);padding:var(--s7) 0;text-align:center;overflow:hidden}
+.ghost{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-weight:700;font-style:italic;font-size:clamp(120px,22vw,300px);line-height:1;color:rgba(0,0,0,.05);pointer-events:none;user-select:none;white-space:nowrap}
+.cta-inner{position:relative;z-index:1}
+#cta .h-sec{color:var(--dark);max-width:18ch;margin-inline:auto}
+#cta .sub{font-size:20px;max-width:56ch;margin-inline:auto}
+#cta .btn{font-size:18px;padding:16px 36px;margin-top:var(--s4)}
+.reassure{font-size:13px;color:var(--muted);margin-top:var(--s3);letter-spacing:.03em}
+
+/* CONTACT */
+#contact{background:#fff;padding:var(--s7) 0 var(--s6)}
+#contact .h-sec{color:var(--dark);margin-bottom:var(--s5)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:var(--s6)}
+.c-info h3{font-family:var(--serif);font-size:30px;color:var(--dark);margin-bottom:6px}
+.c-info>p{color:var(--muted);font-size:17px;max-width:44ch}
+.c-line{display:flex;gap:14px;align-items:center;margin-top:18px;font-size:17px}
+.c-line i{width:20px;color:var(--accent)}
+.c-line.big{font-size:22px;color:var(--accent-deep);font-weight:500}
+form{display:grid;gap:var(--s2)}
+form label{font-size:14px;font-weight:500;color:var(--dark);display:grid;gap:6px}
+form input,form select,form textarea{font:inherit;font-size:16px;color:var(--text);padding:14px;border:1px solid #d9ccc0;border-radius:8px;background:#fff;transition:border-color .25s,box-shadow .25s;width:100%}
+form input:focus,form select:focus,form textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.18)}
+form textarea{min-height:130px;resize:vertical}
+
+/* custom "What do you need?" dropdown */
+.field{display:grid;gap:6px;font-size:14px;font-weight:500;color:var(--dark)}
+.native-select{position:absolute!important;width:1px!important;height:1px!important;opacity:0;pointer-events:none;overflow:hidden;clip:rect(0 0 0 0)}
+.cselect{position:relative}
+.cselect-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px 12px 12px;min-height:54px;border:1px solid #d9ccc0;border-radius:8px;background:#fff;font:inherit;font-size:16px;font-weight:400;color:var(--text);cursor:pointer;text-align:left;transition:border-color .25s,box-shadow .25s}
+.cselect-btn:hover{border-color:var(--accent-soft)}
+.cselect-btn:focus-visible,.cselect.open .cselect-btn{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.18)}
+.cselect-val{display:flex;align-items:center;gap:12px;min-width:0}
+.cs-ico{width:30px;height:30px;flex:none;border-radius:8px;background:rgba(var(--accent-rgb),.1);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;font-size:13px;transition:background-color .15s,color .15s}
+.chev{color:var(--accent);font-size:13px;transition:transform .35s var(--ease)}
+.cselect.open .chev{transform:rotate(180deg)}
+.cselect-list{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:30;list-style:none;margin:0;padding:6px;background:var(--cream2);border:1px solid rgba(var(--accent-rgb),.22);border-radius:12px;box-shadow:0 28px 56px -18px rgba(43,33,28,.4);opacity:0;visibility:hidden;transform:translateY(-6px) scale(.98);transform-origin:top center;transition:opacity .2s ease,transform .3s var(--ease),visibility .2s}
+.cselect.open .cselect-list{opacity:1;visibility:visible;transform:none}
+.cselect-list:focus,.cselect-list:focus-visible{outline:0}
+.cselect-list li{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;cursor:pointer;font-size:15.5px;font-weight:400;color:var(--text);outline:0;transition:background-color .15s,color .15s}
+.cselect-list li+li{margin-top:2px}
+.cselect-list li:hover,.cselect-list li.active{background:rgba(var(--accent-rgb),.1)}
+.cselect-list li[aria-selected=true]{background:var(--accent);color:#fff}
+.cselect-list li[aria-selected=true] .cs-ico{background:rgba(255,255,255,.2);color:#fff}
+.cselect-list li[aria-selected=true].active{box-shadow:0 0 0 2px var(--accent-deep) inset}
+.cs-tick{margin-left:auto;font-size:12px;opacity:0;transform:scale(.5);transition:opacity .2s,transform .25s var(--ease)}
+.cselect-list li[aria-selected=true] .cs-tick{opacity:1;transform:none}
+form .btn{justify-content:center;width:100%}
+.form-ok{text-align:center;padding:var(--s5) 0}
+.form-ok i{font-size:36px;color:var(--olive)}
+.form-ok p:first-of-type{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--dark);margin-top:var(--s2)}
+.form-ok p+p{color:var(--muted);margin-top:var(--s1)}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:var(--dark);color:#fff;padding:var(--s6) 0 0}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--s5);padding-bottom:var(--s5)}
+.f-brand .brand{margin-bottom:14px}
+.f-brand p{font-size:14px;color:rgba(255,255,255,.6);max-width:30ch}
+.social{display:flex;gap:18px;margin-top:20px;font-size:20px}
+.social a{color:rgba(255,255,255,.8);transition:color .3s}.social a:hover{color:var(--accent-soft)}
+footer h4{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-soft);font-weight:600;margin-bottom:16px}
+footer ul{list-style:none;display:grid;gap:9px;font-size:14px;color:rgba(255,255,255,.75)}
+footer ul a:hover{color:#fff}
+footer ul i{color:var(--accent-soft);margin-right:8px;width:14px}
+.f-bottom{border-top:1px solid rgba(255,255,255,.08);padding:22px 0;text-align:center;font-size:13px;color:rgba(255,255,255,.45)}
+
+/* CUSTOM CURSOR (desktop, fine pointer only) */
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:5000;pointer-events:none;opacity:0;transition:opacity .3s ease;will-change:transform}
+html.has-cursor .cursor-dot,html.has-cursor .cursor-ring{opacity:1}
+html.cursor-hidden .cursor-dot,html.cursor-hidden .cursor-ring{opacity:0}
+.cursor-dot{width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--accent)}
+.cursor-ring{width:32px;height:32px;margin:-16px 0 0 -16px}
+.cursor-ring span{display:block;width:100%;height:100%;border-radius:50%;border:1.5px solid var(--accent);transition:transform .35s var(--ease),background-color .35s,border-color .35s}
+html.cursor-hover .cursor-ring span{transform:scale(2);background:rgba(var(--accent-rgb),.12);border-color:rgba(var(--accent-rgb),.55)}
+html.cursor-down .cursor-ring span{transform:scale(.8)}
+html.cursor-hover.cursor-down .cursor-ring span{transform:scale(1.7)}
+/* only active while JS has confirmed a desktop (html.cursor-on) */
+html:not(.cursor-on) .cursor-dot,html:not(.cursor-on) .cursor-ring{display:none!important}
+html.cursor-on.has-cursor body,html.cursor-on.has-cursor body *{cursor:none!important}
+html.cursor-on.has-cursor input,html.cursor-on.has-cursor textarea{cursor:text!important}
+@media (max-width:1080px),(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none!important}}
+
+/* scroll-up button next to the logo (desktop) */
+.nav-left{display:flex;align-items:center;gap:18px}
+.to-top{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:100px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.04);color:#fff;font:500 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;opacity:0;visibility:hidden;transform:translateX(-8px);transition:opacity .35s,transform .35s var(--ease),visibility .35s,background-color .25s,border-color .25s}
+#nav.scrolled .to-top{opacity:1;visibility:visible;transform:none}
+.to-top:hover{background:var(--accent);border-color:var(--accent)}
+.to-top i{font-size:11px;transition:transform .3s var(--ease)}
+.to-top:hover i{transform:translateY(-2px)}
+@media(max-width:1080px){.to-top{display:none}}
+
+/* scroll-up button in the footer (mobile + tablet) */
+.foot-top-wrap{display:flex;justify-content:center;padding-bottom:var(--s4)}
+.foot-top{display:inline-flex;align-items:center;justify-content:center;gap:12px;width:100%;max-width:360px;min-height:52px;border-radius:100px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04);color:#fff;font:500 13px var(--sans);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background-color .25s,border-color .25s}
+.foot-top i{width:30px;height:30px;border-radius:50%;background:var(--accent);display:inline-flex;align-items:center;justify-content:center;font-size:12px;transition:transform .3s var(--ease),background-color .25s}
+.foot-top:hover,.foot-top:active{background:var(--accent);border-color:var(--accent)}
+.foot-top:hover i,.foot-top:active i{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+@media(min-width:1081px){.foot-top{width:auto;padding:0 28px 0 12px}}
+
+/* WAVE DIVIDERS (shape from wave-haikei.svg) */
+.wave{position:absolute;left:0;bottom:-1px;width:100%;height:calc(var(--wave-h) + 1px);display:block;pointer-events:none;z-index:2}
+.wave.flip{transform:scaleX(-1)}
+#facts{padding-bottom:calc(var(--s6) + var(--wave-h))}
+#work,#services,#process,#about,#cta{padding-bottom:calc(var(--s7) + var(--wave-h))}
+#contact{padding-bottom:calc(var(--s6) + var(--wave-h))}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:3000;background:rgba(12,9,8,.95);display:grid;grid-template-columns:72px 1fr 72px;grid-template-rows:64px 1fr auto;align-items:center;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.lb.open{opacity:1;visibility:visible}
+.lb-top{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;padding:0 var(--s3);color:#fff}
+.lb-title{font-family:var(--serif);font-size:22px;font-weight:600}
+.lb-title small{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.55);margin-left:12px;font-weight:400;letter-spacing:.06em}
+.lb button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;width:48px;height:48px;border-radius:50%;cursor:pointer;font-size:18px;transition:background .2s;justify-self:center}
+.lb button:hover{background:rgba(255,255,255,.2)}
+.lb-stage{position:relative;height:100%;display:flex;align-items:center;justify-content:center;min-height:0;padding:var(--s2) 0}
+.lb-stage img{max-width:100%;max-height:calc(100vh - 170px);max-height:calc(100svh - 170px);width:auto;height:auto;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6);transition:opacity .2s}
+.lb-stage img.loading{opacity:.2}
+.lb-thumbs{grid-column:1/-1;display:flex;gap:8px;justify-content:center;padding:var(--s2) var(--s3) var(--s3);overflow-x:auto;scrollbar-width:none}
+.lb-thumbs::-webkit-scrollbar{display:none}
+.lb .lb-thumbs button{width:64px;height:46px;border-radius:5px;padding:0;overflow:hidden;flex:none;opacity:.45;border:2px solid transparent;transition:opacity .2s,border-color .2s}
+.lb .lb-thumbs button[aria-current=true]{opacity:1;border-color:var(--accent)}
+.lb-thumbs img{width:100%;height:100%;object-fit:cover}
+body.lb-lock{overflow:hidden}
+
+html.lang-anim [data-i18n]{transition:opacity .22s ease,filter .22s ease}
+html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
+
+/* RESPONSIVE */
+@media(max-width:1080px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .hero-inner{grid-template-columns:1fr 1fr;gap:var(--s5)}
+  .card,.card.wide,.card.mid{grid-column:span 6}
+  .card.wide .card-media,.card.mid .card-media{height:auto;aspect-ratio:4/3}
+  .steps{grid-template-columns:1fr 1fr;row-gap:var(--s5)}
+  .about-grid{gap:var(--s6)}
+  .f-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  body{font-size:17px}
+  .wrap{width:calc(100% - 32px)}
+  .nav-right>.btn,.nav-right>.lang{display:none}
+  .hero-inner{grid-template-columns:1fr;padding:112px 0 72px;gap:var(--s5)}
+  .hero-sub{font-size:18px}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .hero-ctas .btn{justify-content:center}
+  .hero-art{height:440px;min-height:0}
+  .hero-main{width:84%}
+  .hero-plan{width:54%}
+  .hero-badge{right:0}
+  .scroll-cue{display:none}
+  .facts{grid-template-columns:1fr 1fr;row-gap:var(--s4)}
+  .fact,.fact:first-child{border-left:0;padding-left:0}
+  .fact .num{font-size:46px}
+  .card,.card.wide,.card.mid{grid-column:1/-1}
+  .card-open{opacity:1;transform:none}
+  .strip-head{flex-direction:column;align-items:flex-start}
+  .fans{grid-template-columns:1fr;gap:var(--s4)}
+  .fan-stack{max-width:480px}
+  .svc-grid{grid-template-columns:1fr}
+  .service-card.featured{grid-row:auto;padding:var(--s4) var(--s4) 0}
+  .feat-img{margin:var(--s3) calc(-1 * var(--s4)) 0;height:220px;flex:none}
+  .steps{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .about-photo{max-width:420px;width:100%;margin-inline:auto}
+  .contact-grid{grid-template-columns:1fr;gap:var(--s5)}
+  #contact .h-sec{text-align:center;margin-bottom:var(--s4)}
+  .c-info{text-align:center}
+  .c-info h3{font-size:26px}
+  .c-info>p{margin-inline:auto;font-size:16px}
+  .c-line{justify-content:center;margin-top:14px;font-size:16px}
+  .c-line.big{font-size:18px;margin-top:var(--s3);flex-wrap:wrap;gap:10px}
+  #contact-form{padding-top:var(--s5);border-top:1px solid var(--line)}
+  #contact-form .btn{min-height:54px}
+  #cta .btn{font-size:clamp(14px,4.4vw,17px);padding:14px 20px;gap:8px;text-wrap:balance;max-width:100%}
+  .f-grid{grid-template-columns:1fr}
+  .lb{grid-template-columns:1fr 1fr;grid-template-rows:64px 1fr auto auto}
+  .lb-stage{grid-column:1/-1;grid-row:2;padding:0 8px}
+  .lb-prev{grid-column:1;grid-row:3;justify-self:end!important;margin-right:12px}
+  .lb-next{grid-column:2;grid-row:3;justify-self:start!important;margin-left:12px}
+  .lb-thumbs{grid-row:4}
+  .lb-stage img{max-height:calc(100svh - 230px)}
+  .lb-title{font-size:18px}
+  .lb-title small{display:block;margin:2px 0 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="wave-shape" viewBox="0 380 900 71" preserveAspectRatio="none"><path fill="currentColor" d="M0 408L21.5 405.2C43 402.3 86 396.7 128.8 391.7C171.7 386.7 214.3 382.3 257.2 387C300 391.7 343 405.3 385.8 406.8C428.7 408.3 471.3 397.7 514.2 394.7C557 391.7 600 396.3 642.8 397.2C685.7 398 728.3 395 771.2 398.8C814 402.7 857 413.3 878.5 418.7L900 424L900 451L878.5 451C857 451 814 451 771.2 451C728.3 451 685.7 451 642.8 451C600 451 557 451 514.2 451C471.3 451 428.7 451 385.8 451C343 451 300 451 257.2 451C214.3 451 171.7 451 128.8 451C86 451 43 451 21.5 451L0 451Z"/></symbol>
+</svg>
+<a class="skip" href="#work">Skip to work</a>
+<div id="scroll-progress"></div>
+
+<!-- NAV -->
+<nav id="nav" aria-label="Main">
+  <div class="wrap">
+    <div class="nav-left">
+      <a href="#hero" class="brand"><span class="dot"></span>ELENA<small>INTERIORS</small></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#work" data-i18n="nav.work">Work</a></li>
+      <li><a href="#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="#process" data-i18n="nav.process">Process</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="uk" aria-pressed="false">UA</button>
+        <button type="button" data-lang="cs" aria-pressed="false">CZ</button>
+      </div>
+      <a href="#contact" class="btn btn-fill"><span data-i18n="nav.cta">Discuss a project</span></a>
+      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div id="mobile-menu" aria-hidden="true">
+  <nav class="mm-links" aria-label="Mobile">
+    <a href="#work" style="--d:0"><small>01</small><span data-i18n="nav.work">Work</span></a>
+    <a href="#services" style="--d:1"><small>02</small><span data-i18n="nav.services">Services</span></a>
+    <a href="#process" style="--d:2"><small>03</small><span data-i18n="nav.process">Process</span></a>
+    <a href="#about" style="--d:3"><small>04</small><span data-i18n="nav.about">About</span></a>
+    <a href="#contact" style="--d:4"><small>05</small><span data-i18n="foot.contact">Contact</span></a>
+  </nav>
+  <div class="mm-foot">
+    <span class="mm-label" data-i18n="mm.lang">Language</span>
+    <div class="lang lang-lg" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="uk" aria-pressed="false">Українська</button>
+      <button type="button" data-lang="cs" aria-pressed="false">Čeština</button>
+    </div>
+    <a href="#contact" class="btn btn-fill"><span data-i18n="nav.cta">Discuss a project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <a class="mm-mail" href="mailto:kornienko.lena.k@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>kornienko.lena.k@gmail.com</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header id="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy on-dark">
+      <p class="label hero-in" data-i18n="hero.label">Interior design &amp; visualization · Czech Republic · Plzeň</p>
+      <h1 class="hero-headline hero-in" data-i18n="hero.h">Spaces with <em>soul</em>, drawn before they're built.</h1>
+      <p class="hero-sub hero-in" data-i18n="hero.sub">I'm Elena, an interior designer and architectural visualizer. I design homes, hotels and cafés, and draw them so you can walk through them before the first wall goes up.</p>
+      <div class="hero-ctas hero-in">
+        <a href="#work" class="btn btn-fill"><span data-i18n="hero.btn1">See the projects</span> <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+        <a href="#contact" class="btn btn-line"><span data-i18n="hero.btn2">Talk about your space</span></a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <button type="button" class="hero-main" data-project="lake" data-index="1" aria-label="Open Mountain Lake Retreat" style="border:0;padding:0;cursor:pointer;background:var(--dark)">
+        <img src="photo/pansion/photo_2026-11-21_18-13-40.jpg" alt="Timber guesthouse above a mountain lake, painted visualization" width="927" height="1280" fetchpriority="high">
+      </button>
+      <button type="button" class="hero-plan" data-project="plans" data-index="0" aria-label="Open Rendered Floor Plans" style="padding:0;cursor:pointer;background:var(--cream)">
+        <img src="photo/2d%20plans/photo_2026-11-21_18-13-26.jpg" alt="Rendered floor plan of a two-bedroom apartment" width="1280" height="926">
+      </button>
+      <div class="hero-badge"><i class="fa-solid fa-circle" aria-hidden="true"></i><span data-i18n="hero.badge">Booking 2027 projects</span></div>
+      <div class="hero-tag t1"><small data-i18n="hero.tagk">Featured</small><span data-i18n="pj.lake.t">Mountain Lake Retreat</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">Scroll</div>
+  <div class="hero-shade" aria-hidden="true"></div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+<!-- FACTS -->
+<section id="facts" aria-label="At a glance">
+  <div class="wrap facts">
+    <div class="fact"><div class="num"><span class="counter" data-target="6">6</span></div><div class="lbl" data-i18n="fact.1">Featured projects</div></div>
+    <div class="fact"><div class="num"><span class="counter" data-target="57">57</span></div><div class="lbl" data-i18n="fact.2">Drawings &amp; renders in this portfolio</div></div>
+    <div class="fact"><div class="num"><span class="counter" data-target="3">3</span></div><div class="lbl" data-i18n="fact.3">Working languages</div></div>
+    <div class="fact"><div class="num"><span class="counter" data-target="1">1</span></div><div class="lbl" data-i18n="fact.4">Designer, from first sketch to final drawing</div></div>
+  </div>
+  <svg class="wave" style="color:var(--cream2)" aria-hidden="true" focusable="false"><use href="#wave-shape"/></svg>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label" data-i18n="work.label">Selected work</p>
+      <h2 class="h-sec" data-i18n="work.h">Hotels, homes and every room in between.</h2>
+      <p class="sub" data-i18n="work.sub">Open any project to see the full set of drawings, from site plan to the last detail.</p>
+    </div>
+    <div class="work-grid">
+      <button type="button" class="card wide" data-project="hotel" data-aos="fade-up">
+        <div class="card-media"><img src="photo/hotel/photo_2026-11-21_18-13-14.jpg" alt="Terraced hotel balconies overlooking a beach and pools" loading="lazy" width="1280" height="839">
+          <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>6</span>
+          <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
+        <div class="card-body"><span class="card-cat" data-i18n="pj.hotel.c">Hospitality · Architecture &amp; interiors</span><h3 data-i18n="pj.hotel.t">Seaside Resort Hotel</h3><p data-i18n="pj.hotel.d">A terraced beach hotel: the masterplan, pool gardens, the lobby lounge and a double-height suite.</p></div>
+      </button>
+      <button type="button" class="card mid" data-project="h92" data-aos="fade-up" data-aos-delay="80">
+        <div class="card-media"><img src="photo/Hotel%2092/photo_2026-11-21_18-14-04.jpg" alt="Hotel 92 bar with dark wood, bottles and an arched window" loading="lazy" width="1014" height="1280" style="object-position:center 30%">
+          <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>6</span>
+          <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
+        <div class="card-body"><span class="card-cat" data-i18n="pj.h92.c">Hospitality · Interiors</span><h3 data-i18n="pj.h92.t">Hotel 92</h3><p data-i18n="pj.h92.d">A boutique hotel in a brick townhouse, with a bar, a bakery café and a library lounge.</p></div>
+      </button>
+      <button type="button" class="card" data-project="lake" data-aos="fade-up">
+        <div class="card-media"><img src="photo/pansion/photo_2026-11-21_18-13-40%20(2).jpg" alt="Aerial view of a guesthouse village on a mountain lake" loading="lazy" width="1280" height="927">
+          <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>6</span>
+          <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
+        <div class="card-body"><span class="card-cat" data-i18n="pj.lake.c">Hospitality · Architecture</span><h3 data-i18n="pj.lake.t">Mountain Lake Retreat</h3><p data-i18n="pj.lake.d">A guesthouse village on a mountain lake: the site plan, timber cabins and glass-walled common rooms.</p></div>
+      </button>
+      <button type="button" class="card" data-project="wood" data-aos="fade-up" data-aos-delay="80">
+        <div class="card-media"><img src="photo/home%20in%20wood/photo_2026-11-21_18-13-38.jpg" alt="Modern two-storey house among misty pine trees" loading="lazy" width="1280" height="777">
+          <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>7</span>
+          <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
+        <div class="card-body"><span class="card-cat" data-i18n="pj.wood.c">Residential · Architecture &amp; interiors</span><h3 data-i18n="pj.wood.t">House in the Forest</h3><p data-i18n="pj.wood.d">A family house on a wooded slope, shown in section, from the terrace and room by room.</p></div>
+      </button>
+      <button type="button" class="card" data-project="plans" data-aos="fade-up" data-aos-delay="160">
+        <div class="card-media"><img src="photo/2d%20plans/photo_2026-11-21_18-13-27.jpg" alt="Rendered floor plan of a house with garage and open living area" loading="lazy" width="1280" height="926">
+          <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>11</span>
+          <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
+        <div class="card-body"><span class="card-cat" data-i18n="pj.plans.c">Plans · Apartments &amp; houses</span><h3 data-i18n="pj.plans.t">Rendered Floor Plans</h3><p data-i18n="pj.plans.d">Apartments and houses drawn from above, furnished and textured so every room reads at a glance.</p></div>
+      </button>
+
+      <div class="strip-wrap">
+        <div class="strip-head">
+          <div>
+            <span class="card-cat" data-i18n="pj.int.c">Residential &amp; hospitality · 21 views</span>
+            <h3 data-i18n="pj.int.t">Interiors Collection</h3>
+            <p data-i18n="pj.int.d">Living rooms, bedrooms, children's rooms, kitchens and a few restaurants. Hover or tap a stack to fan it out, then click any view to enlarge it.</p>
+          </div>
+        </div>
+        <div class="fans" id="fans"></div>
+      </div>
+    </div>
+  </div>
+  <svg class="wave flip" style="color:var(--dark3)" aria-hidden="true" focusable="false"><use href="#wave-shape"/></svg>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="on-dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label" data-i18n="svc.label">What I do</p>
+      <h2 class="h-sec" data-i18n="svc.h">From the first plan to the final view.</h2>
+      <p class="sub" data-i18n="svc.sub">Four ways I help homeowners, architects and hoteliers see a space before it exists. Most projects combine two or three.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="service-card featured" data-aos="fade-up">
+        <span class="popular" data-i18n="svc.popular">Most requested</span>
+        <div class="icon-box"><i class="fa-solid fa-couch" aria-hidden="true"></i></div>
+        <h3 data-i18n="svc.s1h">Interior Design</h3>
+        <p data-i18n="svc.s1p">A complete concept for your home or apartment: layout, materials, lighting and furniture, drawn room by room.</p>
+        <ul>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i><span data-i18n="svc.s1a">Furnished floor plan and zoning</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i><span data-i18n="svc.s1b">Painted views of every key room</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i><span data-i18n="svc.s1c">Materials, colours and lighting chosen</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i><span data-i18n="svc.s1d">Two rounds of revisions included</span></li>
+        </ul>
+        <a href="#contact" class="more" data-svc="0" data-i18n="svc.more">Ask about this →</a>
+        <div class="feat-img"><img src="photo/home%20in%20wood/photo_2026-11-21_18-13-37.jpg" alt="Living room with a cream sofa, marble wall and dark blue shelving" loading="lazy" width="1280" height="775"></div>
+      </article>
+      <article class="service-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="icon-box"><i class="fa-solid fa-mug-saucer" aria-hidden="true"></i></div>
+        <h3 data-i18n="svc.s2h">Hospitality Interiors</h3>
+        <p data-i18n="svc.s2p">Hotels, cafés, bars and guesthouses with a clear mood, designed for guests and workable for staff.</p>
+        <a href="#contact" class="more" data-svc="1" data-i18n="svc.more">Ask about this →</a>
+      </article>
+      <article class="service-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="icon-box"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i></div>
+        <h3 data-i18n="svc.s3h">Architectural Visualization</h3>
+        <p data-i18n="svc.s3p">Exteriors, site plans and sections that show a building in its landscape, for clients, investors and presentations.</p>
+        <a href="#contact" class="more" data-svc="2" data-i18n="svc.more">Ask about this →</a>
+      </article>
+      <article class="service-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="icon-box"><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i></div>
+        <h3 data-i18n="pj.plans.t">Rendered Floor Plans</h3>
+        <p data-i18n="svc.s4p">Clear, colourful plans that make a layout easy to understand, ready for listings, brochures and presentations.</p>
+        <a href="#contact" class="more" data-svc="3" data-i18n="svc.more">Ask about this →</a>
+      </article>
+    </div>
+  </div>
+  <svg class="wave" style="color:#fff" aria-hidden="true" focusable="false"><use href="#wave-shape"/></svg>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label" data-i18n="proc.label">How we work</p>
+      <h2 class="h-sec" data-i18n="proc.h" style="color:var(--dark)">Four steps from first call to final drawings.</h2>
+      <p class="sub" data-i18n="proc.sub">You always know what you'll receive next, and nothing is final until you're happy with it.</p>
+    </div>
+    <div class="steps">
+      <div class="process-step" data-aos="fade-up"><div class="step-num">01</div><h3 data-i18n="proc.p1h">Brief &amp; measurements</h3><p data-i18n="proc.p1p">A call about how you live, or how your guests should feel, plus the plans or measurements of the space.</p></div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="80"><div class="step-num">02</div><h3 data-i18n="proc.p2h">Layout</h3><p data-i18n="proc.p2p">A furnished floor plan with zones and circulation, so we agree on how the space works before how it looks.</p></div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="160"><div class="step-num">03</div><h3 data-i18n="proc.p3h">Concept &amp; views</h3><p data-i18n="proc.p3p">Materials, colour and light, drawn as views of each key room. Two rounds of revisions are included.</p></div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="240"><div class="step-num">04</div><h3 data-i18n="proc.p4h">Final set</h3><p data-i18n="proc.p4p">The approved plans and views as high-resolution files, ready for your builder, your team or your listing.</p></div>
+    </div>
+  </div>
+  <svg class="wave flip" style="color:var(--dark2)" aria-hidden="true" focusable="false"><use href="#wave-shape"/></svg>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="on-dark">
+  <div class="wrap about-grid">
+    <div class="about-photo" data-aos="fade-up">
+      <img src="photo/elena-portrait.jpg" alt="Portrait of Elena" data-i18n-alt="about.alt" loading="lazy" width="587" height="785">
+      <div class="about-sign">Elena<small data-i18n="about.role">Interior designer</small></div>
+    </div>
+    <div class="about-copy">
+      <p class="label" data-i18n="about.label">About me</p>
+      <h2 class="h-sec" data-i18n="about.h">I&#39;m a sketch designer. From the first sketch to the final drawing on your project.</h2>
+      <p class="lead" data-i18n="about.p">I'm Elena. I draw interiors and buildings by hand and digitally, in a painterly style that shows light, texture and mood, not just walls. I work from Barcelona with clients across Europe.</p>
+      <ul class="checks">
+        <li><span class="ck"><i class="fa-solid fa-check" aria-hidden="true"></i></span><span data-i18n="about.c1">You talk to the person drawing your space, every time</span></li>
+        <li><span class="ck"><i class="fa-solid fa-check" aria-hidden="true"></i></span><span data-i18n="about.c2">Layout first: every room has to work before it looks good</span></li>
+        <li><span class="ck"><i class="fa-solid fa-check" aria-hidden="true"></i></span><span data-i18n="about.c3">Homes, hotels, cafés and guesthouses</span></li>
+        <li><span class="ck"><i class="fa-solid fa-check" aria-hidden="true"></i></span><span data-i18n="about.c4">A fixed project price, agreed before we start</span></li>
+        <li><span class="ck"><i class="fa-solid fa-check" aria-hidden="true"></i></span><span data-i18n="about.c5">Working in English, Ukrainian and Czech</span></li>
+      </ul>
+      <a href="#contact" class="btn btn-fill"><span data-i18n="about.btn">Tell me about your space</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <svg class="wave" style="color:var(--cream)" aria-hidden="true" focusable="false"><use href="#wave-shape"/></svg>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="ghost" aria-hidden="true">Interiors</div>
+  <div class="wrap cta-inner">
+    <p class="label" data-aos="fade-up" data-i18n="cta.label">Ready to start?</p>
+    <h2 class="h-sec" data-aos="fade-up" data-aos-delay="80" data-i18n="cta.h">Let's draw your space before it's built.</h2>
+    <p class="sub" data-aos="fade-up" data-aos-delay="160" data-i18n="cta.sub">Send me a plan, a photo or just an idea. You'll get a free 30 minute call and a clear proposal within a week.</p>
+    <a href="#contact" class="btn btn-fill"><span data-i18n="cta.btn">Book your free intro call</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <p class="reassure" data-i18n="cta.re">Replies within one working day · Fixed project pricing · Based in Barcelona</p>
+  </div>
+  <svg class="wave flip" style="color:#fff" aria-hidden="true" focusable="false"><use href="#wave-shape"/></svg>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <h2 class="h-sec" data-i18n="contact.h">Get in touch</h2>
+    <div class="contact-grid">
+      <div class="c-info">
+        <h3 data-i18n="contact.ready">Have a space in mind?</h3>
+        <p data-i18n="contact.area">Based in Plzeň, working with homeowners, architects and hotels across Europe and beyond.</p>
+        <a class="c-line big" href="mailto:kornienko.lena.k@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>kornienko.lena.k@gmail.com</a>
+        <a class="c-line" href="https://wa.me/420728256152" target="_blank" rel="noopener" aria-label="WhatsApp +420 728 256 152"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>+420-728-256-152</a>
+        <a class="c-line" href="https://www.elenadesigns.com"><i class="fa-solid fa-globe" aria-hidden="true"></i>www.elenadesigns.com</a>
+        <a class="c-line" href="https://instagram.com/elena.sketch"><i class="fa-brands fa-instagram" aria-hidden="true"></i>@elena.sketch</a>
+        <p class="c-line"><i class="fa-regular fa-clock" aria-hidden="true"></i><span data-i18n="contact.hours">Mon to Fri, 9:00 to 18:00 CET</span></p>
+        <p class="c-line"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span data-i18n="contact.loc">Plzeň, Czech Republic</span></p>
+      </div>
+      <form id="contact-form">
+        <label><span data-i18n="form.name">Full name</span><input type="text" name="name" required autocomplete="name"></label>
+        <label><span data-i18n="form.email">Email</span><input type="email" name="email" required autocomplete="email"></label>
+        <div class="field">
+          <span id="service-label" data-i18n="form.service">What do you need?</span>
+          <select name="service" id="service" class="native-select" tabindex="-1" aria-hidden="true">
+            <option data-icon="fa-couch" data-i18n="svc.s1h">Interior Design</option>
+            <option data-icon="fa-mug-saucer" data-i18n="svc.s2h">Hospitality Interiors</option>
+            <option data-icon="fa-mountain-sun" data-i18n="svc.s3h">Architectural Visualization</option>
+            <option data-icon="fa-ruler-combined" data-i18n="pj.plans.t">Rendered Floor Plans</option>
+            <option data-icon="fa-circle-question" data-i18n="form.notsure">Not sure yet</option>
+          </select>
+          <div class="cselect" id="cselect">
+            <button type="button" class="cselect-btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="service-label cselect-val">
+              <span class="cselect-val" id="cselect-val"></span><i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i>
+            </button>
+            <ul class="cselect-list" role="listbox" aria-labelledby="service-label" tabindex="-1"></ul>
+          </div>
+        </div>
+        <label><span data-i18n="form.msg">Tell me about the space (optional)</span><textarea name="message"></textarea></label>
+        <button class="btn btn-fill" type="submit"><span data-i18n="form.send">Send my request →</span></button>
+      </form>
+    </div>
+  </div>
+  <svg class="wave" style="color:var(--dark)" aria-hidden="true" focusable="false"><use href="#wave-shape"/></svg>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap f-grid">
+    <div class="f-brand">
+      <div class="brand"><span class="dot"></span>ELENA</div>
+      <p data-i18n="foot.tag">Interior design and architectural visualization. Drawn with soul in Barcelona.</p>
+      <div class="social"><a href="https://instagram.com/elena.sketch" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="Behance"><i class="fa-brands fa-behance"></i></a><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></div>
+    </div>
+    <div><h4 data-i18n="foot.svc">Services</h4><ul>
+      <li><a href="#services" data-i18n="svc.s1h">Interior Design</a></li>
+      <li><a href="#services" data-i18n="svc.s2h">Hospitality Interiors</a></li>
+      <li><a href="#services" data-i18n="svc.s3h">Architectural Visualization</a></li>
+      <li><a href="#services" data-i18n="pj.plans.t">Rendered Floor Plans</a></li></ul></div>
+    <div><h4 data-i18n="foot.contact">Contact</h4><ul>
+      <li><a href="mailto:kornienko.lena.k@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>kornienko.lena.k@gmail.com</a></li>
+      <li><a href="https://instagram.com/elena.sketch"><i class="fa-brands fa-instagram" aria-hidden="true"></i>@elena.sketch</a></li>
+      <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span data-i18n="contact.loc">Plzeň, Czech Republic</span></li></ul></div>
+    <div><h4 data-i18n="foot.links">Quick links</h4><ul>
+      <li><a href="#hero" data-i18n="foot.home">Home</a></li>
+      <li><a href="#work" data-i18n="nav.work">Work</a></li>
+      <li><a href="#process" data-i18n="nav.process">Process</a></li>
+      <li><a href="#contact" data-i18n="foot.contact">Contact</a></li></ul></div>
+  </div>
+  <div class="wrap foot-top-wrap">
+    <button type="button" class="foot-top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i><span data-i18n="nav.top">Scroll up</span></button>
+  </div>
+  <div class="f-bottom"><span data-i18n="foot.copy">© 2026 Elena. All rights reserved. · Created with love in the Czech Republic</span></div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lb-title" aria-hidden="true">
+  <div class="lb-top">
+    <div class="lb-title" id="lb-title"><span id="lb-name"></span><small id="lb-count"></small></div>
+    <button type="button" class="lb-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  </div>
+  <button type="button" class="lb-prev" aria-label="Previous image"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+  <div class="lb-stage"><img id="lb-img" alt=""></div>
+  <button type="button" class="lb-next" aria-label="Next image"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+/* ---------- projects ---------- */
+const PROJECTS={
+  hotel:{dir:'hotel',files:['18-13-14','18-13-19','18-13-20','18-13-22','18-13-23','18-13-25']},
+  h92:{dir:'Hotel 92',files:['18-14-02 (2)','18-14-03','18-14-04 (2)','18-14-04','18-14-05','18-14-06']},
+  lake:{dir:'pansion',files:['18-13-40 (2)','18-13-40','18-13-41','18-13-42','18-13-43','18-13-44']},
+  wood:{dir:'home in wood',files:['18-13-35','18-13-36','18-13-37','18-13-38','18-13-39','18-13-56','18-13-57 (2)']},
+  plans:{dir:'2d plans',files:['18-13-26','18-13-27','18-13-27 (2)','18-13-28','18-13-30','18-13-31 (2)','18-13-31','18-13-32','18-13-33','18-13-34','18-14-00']},
+  int:{dir:'oter works',files:['18-13-44 (2)','18-13-45','18-13-46','18-13-47 (2)','18-13-47','18-13-48','18-13-49 (2)','18-13-49','18-13-50','18-13-51','18-13-52 (2)','18-13-52','18-13-53','18-13-54','18-13-55 (2)','18-13-55','18-13-57','18-13-58','18-13-59','18-14-00 (2)','18-14-02']}
+};
+const src=(p,i)=>encodeURI(`photo/${PROJECTS[p].dir}/photo_2026-11-21_${PROJECTS[p].files[i]}.jpg`);
+
+/* interiors: 3 fanned stacks of 7 cards */
+const fans=document.getElementById('fans'), PER=7, total=PROJECTS.int.files.length;
+for(let g=0;g<Math.ceil(total/PER);g++){
+  const fan=document.createElement('div'); fan.className='fan';
+  const stack=document.createElement('div'); stack.className='fan-stack';
+  const n=Math.min(PER,total-g*PER), mid=(n-1)/2;
+  for(let j=0;j<n;j++){
+    const k=g*PER+j, i=j-mid;
+    const b=document.createElement('button'); b.type='button'; b.className='fan-card';
+    b.dataset.project='int'; b.dataset.index=k;
+    b.style.setProperty('--i',i); b.style.setProperty('--z',10-Math.abs(i));
+    b.setAttribute('aria-label',`Interior ${k+1} of ${total}`);
+    b.innerHTML=`<img src="${src('int',k)}" alt="" loading="lazy">`;
+    stack.appendChild(b);
+  }
+  // touch screens have no hover: first tap fans the stack out, the next tap opens the photo
+  stack.addEventListener('click',e=>{
+    if(matchMedia('(hover:hover)').matches||stack.classList.contains('open')) return;
+    e.stopPropagation();
+    document.querySelectorAll('.fan-stack.open').forEach(s=>s.classList.remove('open'));
+    stack.classList.add('open');
+  });
+  const cap=document.createElement('div'); cap.className='fan-cap';
+  cap.textContent=`${String(g*PER+1).padStart(2,'0')} — ${String(g*PER+n).padStart(2,'0')}`;
+  fan.append(stack,cap); fans.appendChild(fan);
+}
+
+/* ---------- i18n ---------- */
+const I18N={
+uk:{
+"title":"Олена · Дизайнерка інтер'єрів у Барселоні",
+"nav.work":"Проєкти","nav.services":"Послуги","nav.process":"Процес","nav.about":"Про мене","nav.cta":"Обговорити проєкт","nav.top":"Нагору","mm.lang":"Мова",
+"hero.label":"Дизайн інтер'єрів і візуалізація · Чехія · Пльзень",
+"hero.h":"Простори з <em>душею</em>, намальовані ще до будівництва.",
+"hero.sub":"Я Олена, дизайнерка інтер'єрів і архітектурна візуалізаторка. Проєктую будинки, готелі й кав'ярні та малюю їх так, щоб ви могли пройтися ними ще до того, як з'явиться перша стіна.",
+"hero.btn1":"Переглянути проєкти","hero.btn2":"Обговорити ваш простір","hero.badge":"Приймаю проєкти на 2027","hero.tagk":"Вибраний проєкт",
+"fact.1":"Проєктів у портфоліо","fact.2":"Креслень і візуалізацій у портфоліо","fact.3":"Мови роботи","fact.4":"Дизайнерка від першого ескізу до фінального креслення",
+"work.label":"Вибрані роботи","work.h":"Готелі, будинки й кожна кімната між ними.","work.sub":"Відкрийте будь-який проєкт, щоб побачити всі креслення: від генплану до останньої деталі.","work.open":"Відкрити проєкт",
+"pj.hotel.t":"Готель на узбережжі","pj.hotel.c":"Гостинність · Архітектура та інтер'єри","pj.hotel.d":"Терасний пляжний готель: генплан, сади з басейнами, лаунж у лобі та двосвітловий номер.",
+"pj.h92.t":"Hotel 92","pj.h92.c":"Гостинність · Інтер'єри","pj.h92.d":"Бутик-готель у цегляному міському будинку з баром, кав'ярнею-пекарнею та лаунжем-бібліотекою.",
+"pj.lake.t":"Пансіонат біля гірського озера","pj.lake.c":"Гостинність · Архітектура","pj.lake.d":"Пансіонат на березі гірського озера: генплан, дерев'яні будиночки та засклені спільні зали.",
+"pj.wood.t":"Будинок у лісі","pj.wood.c":"Житло · Архітектура та інтер'єри","pj.wood.d":"Сімейний будинок на лісистому схилі: розріз, тераса і кожна кімната окремо.",
+"pj.plans.t":"Кольорові плани","pj.plans.c":"Плани · Квартири та будинки","pj.plans.d":"Квартири й будинки згори, з меблями та фактурами, щоб кожну кімнату було зрозуміло з першого погляду.",
+"pj.int.t":"Колекція інтер'єрів","pj.int.c":"Житло та гостинність · 21 вид","pj.int.d":"Вітальні, спальні, дитячі, кухні та кілька ресторанів. Наведіть або торкніться стосу, щоб розкрити віяло, і натисніть на будь-який вид, щоб збільшити.",
+"svc.label":"Що я роблю","svc.h":"Від першого плану до фінальної візуалізації.","svc.sub":"Чотири способи, якими я допомагаю власникам, архітекторам і готельєрам побачити простір ще до того, як він з'явиться. Більшість проєктів поєднують два-три з них.",
+"svc.popular":"Найчастіше замовляють","svc.s1h":"Дизайн інтер'єру","svc.s1p":"Повна концепція для вашого будинку чи квартири: планування, матеріали, світло й меблі, кімната за кімнатою.",
+"svc.s1a":"План з меблюванням і зонуванням","svc.s1b":"Мальовані візуалізації кожної ключової кімнати","svc.s1c":"Підбір матеріалів, кольорів і світла","svc.s1d":"Два раунди правок включено",
+"svc.more":"Запитати про це →","svc.s2h":"Інтер'єри для гостинності","svc.s2p":"Готелі, кав'ярні, бари й пансіонати з виразним настроєм: затишні для гостей і зручні для персоналу.",
+"svc.s3h":"Архітектурна візуалізація","svc.s3p":"Екстер'єри, генплани й розрізи, що показують будівлю в її ландшафті, для клієнтів, інвесторів і презентацій.",
+"svc.s4p":"Зрозумілі кольорові плани, з яких легко прочитати планування: для оголошень, буклетів і презентацій.",
+"proc.label":"Як ми працюємо","proc.h":"Чотири кроки від першої розмови до фінальних креслень.","proc.sub":"Ви завжди знаєте, що отримаєте далі, і ніщо не стає остаточним, доки вам не сподобається.",
+"proc.p1h":"Бриф і заміри","proc.p1p":"Розмова про те, як ви живете або що мають відчувати ваші гості, а також плани чи заміри простору.",
+"proc.p2h":"Планування","proc.p2p":"План з меблями, зонами й проходами, щоб ми погодили, як простір працює, ще до того, як він виглядатиме.",
+"proc.p3h":"Концепція та візуалізації","proc.p3p":"Матеріали, колір і світло, намальовані як види кожної ключової кімнати. Два раунди правок включено.",
+"proc.p4h":"Фінальний комплект","proc.p4p":"Затверджені плани й візуалізації у високій роздільності, готові для будівельників, вашої команди чи оголошення.",
+"about.label":"Про мене","about.h":"Я скетч-дизайнерка. Від першого ескізу до фінального креслення вашого проєкту.","about.role":"Дизайнерка інтер'єрів","about.alt":"Портрет Олени",
+"about.p":"Я Олена. Малюю інтер'єри та будівлі вручну й у цифрі, у живописній манері, яка передає світло, фактуру й настрій, а не лише стіни. Працюю з Барселони з клієнтами по всій Європі.",
+"about.c1":"Ви завжди спілкуєтеся з тією, хто малює ваш простір","about.c2":"Спершу планування: кожна кімната має працювати, перш ніж гарно виглядати","about.c3":"Будинки, готелі, кав'ярні й пансіонати","about.c4":"Фіксована ціна проєкту, погоджена до початку роботи","about.c5":"Працюю англійською, українською та чеською",
+"about.btn":"Розкажіть про свій простір",
+"cta.label":"Готові почати?","cta.h":"Намалюймо ваш простір ще до будівництва.","cta.sub":"Надішліть план, фото або просто ідею. Ви отримаєте безкоштовну 30-хвилинну розмову та чітку пропозицію протягом тижня.","cta.btn":"Записатися на безкоштовну розмову","cta.re":"Відповідаю протягом робочого дня · Фіксована ціна · Барселона",
+"contact.h":"Зв'язатися","contact.ready":"Маєте простір, який хочете змінити?","contact.area":"Я в Пльзені та працюю з власниками житла, архітекторами й готелями по всій Європі й за її межами.","contact.hours":"Пн–Пт, 9:00–18:00 CET","contact.loc":"Пльзень, Чехія",
+"form.name":"Ім'я та прізвище","form.email":"Email","form.service":"Що вам потрібно?","form.notsure":"Ще не знаю","form.msg":"Розкажіть про простір (необов'язково)","form.send":"Надіслати запит →",
+"foot.tag":"Дизайн інтер'єрів і архітектурна візуалізація. Намальовано з душею в Барселоні.","foot.svc":"Послуги","foot.contact":"Контакти","foot.links":"Швидкі посилання","foot.home":"Головна","foot.copy":"© 2026 Олена. Усі права захищені. · Створено з любов'ю в Чехії"
+},
+cs:{
+"title":"Elena · Designérka interiérů v Barceloně",
+"nav.work":"Projekty","nav.services":"Služby","nav.process":"Postup","nav.about":"O mně","nav.cta":"Probrat projekt","nav.top":"Nahoru","mm.lang":"Jazyk",
+"hero.label":"Návrhy interiérů a vizualizace · Česká republika · Plzeň",
+"hero.h":"Prostory s <em>duší</em>, nakreslené dřív, než se postaví.",
+"hero.sub":"Jsem Elena, designérka interiérů a architektonická vizualizérka. Navrhuji domy, hotely a kavárny a kreslím je tak, abyste jimi mohli projít ještě před první postavenou zdí.",
+"hero.btn1":"Prohlédnout projekty","hero.btn2":"Probrat váš prostor","hero.badge":"Volné termíny na rok 2027","hero.tagk":"Vybraný projekt",
+"fact.1":"Vybraných projektů","fact.2":"Výkresů a vizualizací v portfoliu","fact.3":"Pracovní jazyky","fact.4":"Designérka od první skici po finální výkres",
+"work.label":"Vybrané práce","work.h":"Hotely, domy a každá místnost mezi nimi.","work.sub":"Otevřete kterýkoli projekt a uvidíte celou sadu výkresů, od situace po poslední detail.","work.open":"Otevřít projekt",
+"pj.hotel.t":"Přímořský resortní hotel","pj.hotel.c":"Pohostinství · Architektura a interiéry","pj.hotel.d":"Terasovitý plážový hotel: celkový plán, zahrady s bazény, lobby lounge a apartmá s dvojnásobnou výškou.",
+"pj.h92.t":"Hotel 92","pj.h92.c":"Pohostinství · Interiéry","pj.h92.d":"Butikový hotel v cihlovém městském domě s barem, pekárnou s kavárnou a knihovnou s lounge.",
+"pj.lake.t":"Penzion u horského jezera","pj.lake.c":"Pohostinství · Architektura","pj.lake.d":"Penzion na břehu horského jezera: situace, dřevěné chaty a prosklené společenské prostory.",
+"pj.wood.t":"Dům v lese","pj.wood.c":"Bydlení · Architektura a interiéry","pj.wood.d":"Rodinný dům na zalesněném svahu: v řezu, z terasy a místnost po místnosti.",
+"pj.plans.t":"Barevné půdorysy","pj.plans.c":"Půdorysy · Byty a domy","pj.plans.d":"Byty a domy shora, se zařízením a texturami, aby byla každá místnost čitelná na první pohled.",
+"pj.int.t":"Kolekce interiérů","pj.int.c":"Bydlení a pohostinství · 21 pohledů","pj.int.d":"Obývací pokoje, ložnice, dětské pokoje, kuchyně a několik restaurací. Najeďte na balíček nebo na něj klepněte, rozloží se do vějíře, a klepnutím na pohled ho zvětšíte.",
+"svc.label":"Co dělám","svc.h":"Od prvního půdorysu po finální vizualizaci.","svc.sub":"Čtyři způsoby, jak pomáhám majitelům, architektům a hoteliérům vidět prostor dřív, než vznikne. Většina projektů kombinuje dva nebo tři.",
+"svc.popular":"Nejžádanější","svc.s1h":"Návrh interiéru","svc.s1p":"Kompletní koncept pro váš dům nebo byt: dispozice, materiály, osvětlení a nábytek, místnost po místnosti.",
+"svc.s1a":"Půdorys se zařízením a zónováním","svc.s1b":"Malované pohledy do každé klíčové místnosti","svc.s1c":"Výběr materiálů, barev a osvětlení","svc.s1d":"Dvě kola úprav v ceně",
+"svc.more":"Zeptat se →","svc.s2h":"Interiéry pro pohostinství","svc.s2p":"Hotely, kavárny, bary a penziony s jasnou atmosférou, příjemné pro hosty a praktické pro personál.",
+"svc.s3h":"Architektonická vizualizace","svc.s3p":"Exteriéry, situace a řezy, které ukazují stavbu v krajině, pro klienty, investory a prezentace.",
+"svc.s4p":"Přehledné barevné půdorysy, ze kterých je dispozice hned jasná: pro inzeráty, brožury i prezentace.",
+"proc.label":"Jak spolupracujeme","proc.h":"Čtyři kroky od prvního hovoru k finálním výkresům.","proc.sub":"Vždy víte, co dostanete dál, a nic není hotové, dokud nejste spokojeni.",
+"proc.p1h":"Zadání a zaměření","proc.p1p":"Hovor o tom, jak žijete nebo jak se mají cítit vaši hosté, a k tomu plány nebo zaměření prostoru.",
+"proc.p2h":"Dispozice","proc.p2p":"Půdorys se zařízením, zónami a pohybem, abychom se shodli, jak prostor funguje, dřív než jak vypadá.",
+"proc.p3h":"Koncept a pohledy","proc.p3p":"Materiály, barvy a světlo nakreslené jako pohledy do každé klíčové místnosti. Dvě kola úprav jsou v ceně.",
+"proc.p4h":"Finální sada","proc.p4p":"Schválené půdorysy a pohledy ve vysokém rozlišení, připravené pro stavbaře, váš tým nebo inzerát.",
+"about.label":"O mně","about.h":"Jsem sketch designérka. Od první skici po finální výkres vašeho projektu.","about.role":"Designérka interiérů","about.alt":"Portrét Eleny",
+"about.p":"Jsem Elena. Kreslím interiéry a budovy ručně i digitálně, malířským stylem, který ukazuje světlo, texturu a náladu, ne jen stěny. Pracuji z Barcelony s klienty po celé Evropě.",
+"about.c1":"Vždy mluvíte s tím, kdo váš prostor kreslí","about.c2":"Nejdřív dispozice: každá místnost musí fungovat, než začne dobře vypadat","about.c3":"Domy, hotely, kavárny a penziony","about.c4":"Pevná cena projektu dohodnutá předem","about.c5":"Pracuji anglicky, ukrajinsky a česky",
+"about.btn":"Povězte mi o svém prostoru",
+"cta.label":"Připraveni začít?","cta.h":"Nakresleme váš prostor dřív, než se postaví.","cta.sub":"Pošlete mi půdorys, fotku nebo jen nápad. Získáte bezplatný 30minutový hovor a jasnou nabídku do týdne.","cta.btn":"Domluvit úvodní hovor zdarma","cta.re":"Odpovídám do jednoho pracovního dne · Pevná cena · Barcelona",
+"contact.h":"Kontakt","contact.ready":"Máte na mysli nějaký prostor?","contact.area":"Sídlím v Plzni a pracuji s majiteli domů, architekty a hotely po celé Evropě i mimo ni.","contact.hours":"Po–Pá, 9:00–18:00 SEČ","contact.loc":"Plzeň, Česká republika",
+"form.name":"Celé jméno","form.email":"E-mail","form.service":"Co potřebujete?","form.notsure":"Zatím nevím","form.msg":"Povězte mi o prostoru (nepovinné)","form.send":"Odeslat poptávku →",
+"foot.tag":"Návrhy interiérů a architektonické vizualizace. Kresleno s duší v Barceloně.","foot.svc":"Služby","foot.contact":"Kontakt","foot.links":"Rychlé odkazy","foot.home":"Domů","foot.copy":"© 2026 Elena. Všechna práva vyhrazena. · Vytvořeno s láskou v České republice"
+}};
+const MARQUEE={
+  en:['Interior design','Architectural visualization','Rendered floor plans','Hotels & guesthouses','Cafés & bars','Homes & apartments','Booking 2027 projects','English · Українська · Čeština'],
+  uk:['Дизайн інтер\'єрів','Архітектурна візуалізація','Кольорові плани','Готелі й пансіонати','Кав\'ярні й бари','Будинки й квартири','Приймаю проєкти на 2027','English · Українська · Čeština'],
+  cs:['Návrhy interiérů','Architektonická vizualizace','Barevné půdorysy','Hotely a penziony','Kavárny a bary','Domy a byty','Volné termíny na rok 2027','English · Українська · Čeština']
+};
+const FORM_OK={en:['Got it, thank you.','I\'ll reply within one working day, usually with a few questions about the space.'],
+  uk:['Отримала, дякую!','Відповім протягом робочого дня, зазвичай із кількома запитаннями про простір.'],
+  cs:['Mám to, děkuji.','Odpovím do jednoho pracovního dne, obvykle s pár otázkami k prostoru.']};
+
+const texts=[...document.querySelectorAll('[data-i18n]')], alts=[...document.querySelectorAll('[data-i18n-alt]')];
+const EN={title:document.title};
+texts.forEach(el=>{ if(!(el.dataset.i18n in EN)) EN[el.dataset.i18n]=el.innerHTML; });
+alts.forEach(el=>EN[el.dataset.i18nAlt]=el.alt);
+I18N.en=EN;
+let lang='en';
+const tr=k=>(I18N[lang]&&I18N[lang][k]!=null)?I18N[lang][k]:EN[k];
+const plain=k=>{const d=document.createElement('div');d.innerHTML=tr(k);return d.textContent};
+function buildMarquee(){
+  const items=MARQUEE[lang].map(s=>`<span>${s}</span>`).join('');
+  document.getElementById('marquee').innerHTML=items+items;
+}
+function render(){
+  document.documentElement.lang=lang;
+  texts.forEach(el=>{ el.innerHTML=tr(el.dataset.i18n); });
+  alts.forEach(el=>el.alt=tr(el.dataset.i18nAlt));
+  document.title=tr('title');
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));
+  buildMarquee();
+  placePills();
+  if(window.cselectSync) cselectSync();
+  if(lb.classList.contains('open')) show(cur.i);
+}
+function placePills(){
+  document.querySelectorAll('.lang').forEach(g=>{
+    let p=g.querySelector('.lang-pill');
+    if(!p){p=document.createElement('span');p.className='lang-pill';p.setAttribute('aria-hidden','true');g.prepend(p)}
+    const b=g.querySelector('button[aria-pressed=true]');
+    if(!b||!b.offsetWidth) return;
+    p.style.left=b.offsetLeft+'px'; p.style.width=b.offsetWidth+'px';
+    if(!g.classList.contains('ready')) requestAnimationFrame(()=>g.classList.add('ready'));
+  });
+}
+let langTimer=null;
+function setLang(l,animate){
+  if(!I18N[l]||l===lang) return;
+  lang=l; try{localStorage.setItem('elena-lang',l)}catch(e){}
+  if(!animate){render();return}
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));
+  placePills();
+  document.querySelectorAll('.lang').forEach(g=>{g.classList.remove('bump');void g.offsetWidth;g.classList.add('bump')});
+  const root=document.documentElement;
+  root.classList.add('lang-anim','lang-fading');
+  clearTimeout(langTimer);
+  langTimer=setTimeout(()=>{
+    render();
+    requestAnimationFrame(()=>{root.classList.remove('lang-fading');langTimer=setTimeout(()=>root.classList.remove('lang-anim'),300)});
+  },220);
+}
+placePills();
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(placePills);
+addEventListener('resize',placePills);
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang,true)));
+
+/* ---------- lightbox ---------- */
+const lb=document.getElementById('lb'), lbImg=document.getElementById('lb-img'), lbThumbs=document.getElementById('lb-thumbs');
+const cur={p:null,i:0}; let lastFocus=null;
+function show(i){
+  const files=PROJECTS[cur.p].files, n=files.length;
+  cur.i=(i+n)%n;
+  lbImg.classList.add('loading');
+  const pre=new Image(); pre.onload=pre.onerror=()=>{lbImg.src=pre.src;lbImg.classList.remove('loading')}; pre.src=src(cur.p,cur.i);
+  lbImg.alt=`${plain('pj.'+cur.p+'.t')}, ${cur.i+1} / ${n}`;
+  document.getElementById('lb-name').textContent=plain('pj.'+cur.p+'.t');
+  document.getElementById('lb-count').textContent=`${cur.i+1} / ${n}`;
+  [...lbThumbs.children].forEach((t,k)=>t.setAttribute('aria-current',String(k===cur.i)));
+  const active=lbThumbs.children[cur.i]; if(active) active.scrollIntoView({block:'nearest',inline:'center'});
+  new Image().src=src(cur.p,(cur.i+1)%n);
+}
+function openLb(p,i){
+  cur.p=p; lastFocus=document.activeElement;
+  lbThumbs.innerHTML=PROJECTS[p].files.map((_,k)=>`<button type="button" data-k="${k}" aria-label="${k+1}"><img src="${src(p,k)}" alt="" loading="lazy"></button>`).join('');
+  show(i||0);
+  lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.classList.add('lb-lock');
+  if(lenis) lenis.stop();
+  lb.querySelector('.lb-close').focus();
+}
+function closeLb(){
+  lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.classList.remove('lb-lock');
+  if(lenis) lenis.start();
+  if(lastFocus) lastFocus.focus();
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-project]'); if(!t||lb.contains(t)) return;
+  openLb(t.dataset.project,+(t.dataset.index||0));
+});
+lbThumbs.addEventListener('click',e=>{const b=e.target.closest('button'); if(b) show(+b.dataset.k)});
+lb.querySelector('.lb-close').addEventListener('click',closeLb);
+lb.querySelector('.lb-prev').addEventListener('click',()=>show(cur.i-1));
+lb.querySelector('.lb-next').addEventListener('click',()=>show(cur.i+1));
+lb.addEventListener('click',e=>{ if(e.target===lb||e.target.classList.contains('lb-stage')) closeLb(); });
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open')) return;
+  if(e.key==='Escape') closeLb();
+  else if(e.key==='ArrowRight') show(cur.i+1);
+  else if(e.key==='ArrowLeft') show(cur.i-1);
+  else if(e.key==='Tab'){
+    const f=[...lb.querySelectorAll('button')]; const a=f.indexOf(document.activeElement);
+    e.preventDefault(); f[(a+(e.shiftKey?-1:1)+f.length)%f.length].focus();
+  }
+});
+let tx=null;
+lb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',e=>{ if(tx===null) return; const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>50) show(cur.i+(dx<0?1:-1)); tx=null; });
+
+buildMarquee();
+try{const s=localStorage.getItem('elena-lang'); if(s&&s!=='en'&&I18N[s]){lang=s;render();}}catch(e){}
+
+/* ---------- Lenis ---------- */
+let lenis=null;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.Lenis && !reduce){
+  lenis=new Lenis({lerp:.09});
+  function raf(t){lenis.raf(t);requestAnimationFrame(raf)}
+  requestAnimationFrame(raf);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const id=a.getAttribute('href'); if(id.length<2) return;
+  const el=document.querySelector(id); if(!el) return;
+  e.preventDefault(); setMenu(false);
+  if(a.dataset.svc){ const s=document.getElementById('service'); if(s){ s.selectedIndex=+a.dataset.svc; if(window.cselectSync) cselectSync(); } }
+  if(lenis) lenis.scrollTo(el,{offset:-60}); else el.scrollIntoView({behavior:reduce?'auto':'smooth'});
+}));
+
+/* ---------- AOS ---------- */
+if(window.AOS){ AOS.init({duration:600,easing:'ease-out-cubic',once:true,offset:60,disable:reduce}); }
+else document.querySelectorAll('[data-aos]').forEach(el=>el.removeAttribute('data-aos'));
+
+/* ---------- nav, progress, active link ---------- */
+/* hero cover: the next section slides up over the pinned hero */
+const hero=document.getElementById('hero'), heroIn=hero.querySelector('.hero-inner'), heroShade=hero.querySelector('.hero-shade');
+let heroH=0;
+function heroMeasure(){
+  heroH=hero.offsetHeight;
+  // a hero taller than the screen (phones) scrolls to its bottom first, then pins
+  hero.style.top=Math.min(0,innerHeight-heroH)+'px';
+  heroCover();
+}
+function heroCover(){
+  const V=innerHeight, start=Math.max(0,heroH-V), span=Math.min(V,heroH)||1;
+  const p=Math.min(1,Math.max(0,(scrollY-start)/span));
+  if(!reduce) heroIn.style.transform=p?`translateY(${(-p*60).toFixed(1)}px) scale(${(1-p*.08).toFixed(4)})`:'';
+  heroIn.style.opacity=(1-p*.55).toFixed(3);
+  heroShade.style.opacity=(p*.8).toFixed(3);
+  hero.style.visibility=p>=1?'hidden':'';
+}
+addEventListener('resize',heroMeasure);
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(heroMeasure);
+heroMeasure();
+
+const nav=document.getElementById('nav'), prog=document.getElementById('scroll-progress');
+function onScroll(){
+  heroCover();
+  nav.classList.toggle('scrolled',scrollY>80);
+  const h=document.body.scrollHeight-innerHeight;
+  prog.style.width=(h>0?scrollY/h*100:0)+'%';
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+document.querySelectorAll('.to-top,.foot-top').forEach(b=>b.addEventListener('click',()=>{
+  if(lenis) lenis.scrollTo(0,{duration:1.4}); else scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+}));
+const navLinks=[...document.querySelectorAll('.nav-links a')];
+const sio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting) navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
+}),{rootMargin:'-45% 0px -50% 0px'});
+['work','services','process','about'].forEach(id=>sio.observe(document.getElementById(id)));
+const burger=document.querySelector('.burger'), mmenu=document.getElementById('mobile-menu');
+function setMenu(open){
+  if(open===document.body.classList.contains('menu-open')) return;
+  document.body.classList.toggle('menu-open',open);
+  burger.setAttribute('aria-expanded',String(open));
+  burger.setAttribute('aria-label',open?'Close menu':'Menu');
+  mmenu.setAttribute('aria-hidden',String(!open));
+  document.body.style.overflow=open?'hidden':'';
+  if(lenis){open?lenis.stop():lenis.start()}
+  if(open) placePills();
+}
+burger.addEventListener('click',()=>setMenu(!document.body.classList.contains('menu-open')));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&document.body.classList.contains('menu-open')){setMenu(false);burger.focus()} });
+addEventListener('resize',()=>{ if(innerWidth>1080) setMenu(false) });
+
+/* ---------- hero entrance ---------- */
+if(window.gsap && !reduce){
+  gsap.from('.hero-in',{opacity:0,y:24,duration:.7,stagger:.1,ease:'power3.out'});
+  gsap.from('.hero-main',{opacity:0,y:30,duration:1,delay:.2,ease:'power3.out'});
+  gsap.from('.hero-plan',{opacity:0,x:-30,rotate:-10,duration:.9,delay:.55,ease:'power3.out'});
+  gsap.from('.hero-badge,.hero-tag',{opacity:0,y:10,duration:.5,delay:.9,stagger:.12});
+}
+
+/* ---------- counters ---------- */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return; cio.unobserve(e.target);
+  const el=e.target, target=+el.dataset.target;
+  if(!window.gsap||reduce) return;
+  const o={v:0};
+  gsap.to(o,{v:target,duration:1.6,ease:'expo.out',onUpdate:()=>el.textContent=Math.round(o.v)});
+}),{threshold:.5});
+document.querySelectorAll('.counter').forEach(c=>cio.observe(c));
+
+/* ---------- custom cursor: dot + lagging ring ---------- */
+(function(){
+  const root=document.documentElement;
+  const desktopMQ=matchMedia('(hover:hover) and (pointer:fine) and (min-width:1081px)');
+  const ua=navigator.userAgent;
+  const isTabletOrPhone=()=>/Android|iPhone|iPad|iPod|Mobi|Tablet|Silk|Kindle/i.test(ua)
+    || (/Macintosh/.test(ua) && navigator.maxTouchPoints>1); // iPadOS reports itself as a Mac
+  const isDesktop=()=>desktopMQ.matches && !isTabletOrPhone();
+
+  let dot=null, ring=null, raf=0, on=false, started=false;
+  let targetX=-100,targetY=-100,currentX=-100,currentY=-100;
+  const HOVER='a,button,[data-project],label,select,input,textarea,[role=button],[role=option]';
+
+  function onMove(e){
+    targetX=e.clientX; targetY=e.clientY;
+    if(!started){currentX=targetX;currentY=targetY;started=true;root.classList.add('has-cursor')}
+    root.classList.remove('cursor-hidden');
+    dot.style.transform=`translate3d(${targetX}px,${targetY}px,0)`;
+  }
+  function loop(){
+    currentX+=(targetX-currentX)*0.12;
+    currentY+=(targetY-currentY)*0.12;
+    ring.style.transform=`translate3d(${currentX.toFixed(2)}px,${currentY.toFixed(2)}px,0)`;
+    raf=requestAnimationFrame(loop);
+  }
+  const onOver=e=>root.classList.toggle('cursor-hover',!!e.target.closest(HOVER));
+  const onDown=()=>root.classList.add('cursor-down');
+  const onUp=()=>root.classList.remove('cursor-down');
+  const onLeave=()=>root.classList.add('cursor-hidden');
+  const onEnter=()=>root.classList.remove('cursor-hidden');
+
+  function enable(){
+    if(on) return; on=true;
+    dot=document.createElement('div'); dot.className='cursor-dot';
+    ring=document.createElement('div'); ring.className='cursor-ring'; ring.innerHTML='<span></span>';
+    dot.setAttribute('aria-hidden','true'); ring.setAttribute('aria-hidden','true');
+    document.body.append(ring,dot);
+    root.classList.add('cursor-on');
+    addEventListener('mousemove',onMove,{passive:true});
+    document.addEventListener('mouseover',onOver);
+    document.addEventListener('mousedown',onDown);
+    document.addEventListener('mouseup',onUp);
+    root.addEventListener('mouseleave',onLeave);
+    root.addEventListener('mouseenter',onEnter);
+    raf=requestAnimationFrame(loop);
+  }
+  function disable(){
+    if(!on) return; on=false; started=false;
+    cancelAnimationFrame(raf);
+    removeEventListener('mousemove',onMove);
+    document.removeEventListener('mouseover',onOver);
+    document.removeEventListener('mousedown',onDown);
+    document.removeEventListener('mouseup',onUp);
+    root.removeEventListener('mouseleave',onLeave);
+    root.removeEventListener('mouseenter',onEnter);
+    dot.remove(); ring.remove(); dot=ring=null;
+    root.classList.remove('cursor-on','has-cursor','cursor-hover','cursor-down','cursor-hidden');
+  }
+  const update=()=>isDesktop()?enable():disable();
+  update();
+  if(desktopMQ.addEventListener) desktopMQ.addEventListener('change',update); else desktopMQ.addListener(update);
+})();
+
+/* ---------- custom select ("What do you need?") ---------- */
+(function(){
+  const native=document.getElementById('service'), wrap=document.getElementById('cselect');
+  if(!native||!wrap) return;
+  const btn=wrap.querySelector('.cselect-btn'), list=wrap.querySelector('.cselect-list'), val=wrap.querySelector('.cselect-val');
+  let active=0;
+  const opts=()=>[...list.children];
+  function build(){
+    list.innerHTML=[...native.options].map((o,i)=>
+      `<li role="option" id="cs-opt-${i}" data-i="${i}" aria-selected="${i===native.selectedIndex}"><span class="cs-ico"><i class="fa-solid ${o.dataset.icon||'fa-circle'}" aria-hidden="true"></i></span><span>${o.textContent}</span><i class="fa-solid fa-check cs-tick" aria-hidden="true"></i></li>`).join('');
+    const o=native.options[native.selectedIndex];
+    val.innerHTML=`<span class="cs-ico"><i class="fa-solid ${o.dataset.icon||'fa-circle'}" aria-hidden="true"></i></span><span>${o.textContent}</span>`;
+    setActive(native.selectedIndex);
+  }
+  function setActive(i){
+    const os=opts(); if(!os.length) return;
+    active=(i+os.length)%os.length;
+    os.forEach((li,k)=>li.classList.toggle('active',k===active));
+    list.setAttribute('aria-activedescendant','cs-opt-'+active);
+    os[active].scrollIntoView({block:'nearest'});
+  }
+  function open(){
+    wrap.classList.add('open'); btn.setAttribute('aria-expanded','true');
+    setActive(native.selectedIndex); list.focus({preventScroll:true});
+  }
+  function close(focusBtn){
+    if(!wrap.classList.contains('open')) return;
+    wrap.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+    if(focusBtn) btn.focus({preventScroll:true});
+  }
+  function choose(i){
+    native.selectedIndex=i; native.dispatchEvent(new Event('change',{bubbles:true}));
+    build(); close(true);
+  }
+  btn.addEventListener('click',()=>wrap.classList.contains('open')?close(true):open());
+  btn.addEventListener('keydown',e=>{
+    if(['ArrowDown','ArrowUp','Enter',' '].includes(e.key)){e.preventDefault();open();}
+  });
+  list.addEventListener('click',e=>{const li=e.target.closest('li'); if(li) choose(+li.dataset.i);});
+  list.addEventListener('mousemove',e=>{const li=e.target.closest('li'); if(li&&+li.dataset.i!==active) setActive(+li.dataset.i);});
+  list.addEventListener('keydown',e=>{
+    const k=e.key;
+    if(k==='ArrowDown'){e.preventDefault();setActive(active+1);}
+    else if(k==='ArrowUp'){e.preventDefault();setActive(active-1);}
+    else if(k==='Home'){e.preventDefault();setActive(0);}
+    else if(k==='End'){e.preventDefault();setActive(opts().length-1);}
+    else if(k==='Enter'||k===' '){e.preventDefault();choose(active);}
+    else if(k==='Escape'){e.preventDefault();e.stopPropagation();close(true);}
+    else if(k==='Tab'){close(false);}
+  });
+  document.addEventListener('click',e=>{ if(!wrap.contains(e.target)) close(false); });
+  window.cselectSync=build;
+  build();
+})();
+
+/* ---------- form ---------- */
+const form=document.getElementById('contact-form');
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  const [a,b]=FORM_OK[lang];
+  form.innerHTML=`<div class="form-ok" role="status"><i class="fa-regular fa-circle-check" aria-hidden="true"></i><p>${a}</p><p>${b}</p></div>`;
+});
+</script>
+</body>
+</html>
