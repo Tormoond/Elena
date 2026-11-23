@@ -32,6 +32,7 @@ Use this as the starting brief for the next portfolio or one-page site.
 | 21 | Book up to a month ahead | The picker now lists every weekday up to one month ahead instead of 10 days. The month name follows the scroll position. |
 | 22 | Make the site load fast | Two resized copies of every gallery photo: `photo/thumbs/` (720px, q80) and `photo/thumbs-sm/` (420px, q78). Page images use `srcset` + `sizes`; the fans and the lightbox strip use the 420px copies; the lightbox itself still opens the originals. The hero image is preloaded with `fetchpriority=high`. Font Awesome CSS no longer blocks the first paint; CDNs are preconnected; Jost 300 was dropped. **First load: 5.8 MB → 1.2 MB on phones, 1.6 MB on desktop.** Also fixed a load bug (see §4.10): the page opened scrolled down to the contact form. |
 | 23 | Push to GitHub | Repo: **github.com/Tormoond/Elena-portfolio--2** (branch `main`). The form scripts, thumbnails and speed work went in a second commit. `.gitignore` keeps the old web-designer backup and throwaway `_*.html` copies out. |
+| 24 | Link preview shows "ELENA INTERIORS" | `<title>` (and the `uk`/`cs` `title` keys) → **ELENA INTERIORS**. Added Open Graph tags (`og:title`, `og:description`, `og:url`, `og:image` = the lake guesthouse 720px thumb, `twitter:card`). Meta description: Barcelona → Plzeň. Live site: **https://tormoond.github.io/Elena-portfolio--2/**. Telegram caches previews; refresh with @WebpageBot or send the link with `?v=2`. |
 
 **Key decision:** the site must show the **real work**. Invented stats, testimonials and stock photos were removed rather than reworded.
 
@@ -217,7 +218,7 @@ Palette: terracotta `#C8693D`, cream `#F7F1E8` / `#FBF6EF`, dark `#171210`.
 
 ## 7. Open items on this project
 
-- [ ] **Barcelona leftovers** (EN/UA/CZ): the `<title>` and meta description, the About text ("I work from Barcelona…"), the line under the CTA button (`cta.re`) and the footer tagline (`foot.tag`). Ask whether all of them should say Plzeň.
+- [ ] **Barcelona leftovers** (EN/UA/CZ): the About text ("I work from Barcelona…"), the line under the CTA button (`cta.re`) and the footer tagline (`foot.tag`). Ask whether all of them should say Plzeň.
 - [ ] The "www.elenadesigns.com" link in the contact block points to the old domain. Remove it or replace it.
 - [ ] The stats block still says "Designer, from first sketch to final drawing" (`fact.4`). Decide whether it should match the new About heading.
 - [ ] **Deploy the form backend** (logged in as lenasorochenk@gmail.com): create a Google Sheet → Extensions → Apps Script → paste `book/google-apps-script.gs` → run `testSubmission` once to grant permissions → Deploy → Web app (Execute as: Me, Who has access: Anyone) → paste the `/exec` URL into `SCRIPT_URL` in `book/consultation-form.js`. For WhatsApp, get a CallMeBot key for +420 728 345 904 and save it as the Script Property `CALLMEBOT_APIKEY`. After any change to the `.gs` file, redeploy as a **new version** of the same deployment, or the URL keeps running the old code.
