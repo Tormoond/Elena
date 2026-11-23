@@ -490,11 +490,11 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="wave-shape" viewBox="0 380 900 71" preserveAspectRatio="none"><path fill="currentColor" d="M0 408L21.5 405.2C43 402.3 86 396.7 128.8 391.7C171.7 386.7 214.3 382.3 257.2 387C300 391.7 343 405.3 385.8 406.8C428.7 408.3 471.3 397.7 514.2 394.7C557 391.7 600 396.3 642.8 397.2C685.7 398 728.3 395 771.2 398.8C814 402.7 857 413.3 878.5 418.7L900 424L900 451L878.5 451C857 451 814 451 771.2 451C728.3 451 685.7 451 642.8 451C600 451 557 451 514.2 451C471.3 451 428.7 451 385.8 451C343 451 300 451 257.2 451C214.3 451 171.7 451 128.8 451C86 451 43 451 21.5 451L0 451Z"/></symbol>
 </svg>
-<a class="skip" href="#work">Skip to work</a>
+<a class="skip" href="#work" data-i18n="a.skip">Skip to work</a>
 <div id="scroll-progress"></div>
 
 <!-- NAV -->
-<nav id="nav" aria-label="Main">
+<nav id="nav" data-i18n-aria="a.main" aria-label="Main">
   <div class="wrap">
     <div class="nav-left">
       <a href="#hero" class="brand"><span class="dot"></span>ELENA<small>INTERIORS</small></a>
@@ -506,18 +506,18 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
       <li><a href="#about" data-i18n="nav.about">About</a></li>
     </ul>
     <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language">
+      <div class="lang" role="group" data-i18n-aria="mm.lang" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" data-lang="uk" aria-pressed="false">UA</button>
         <button type="button" data-lang="cs" aria-pressed="false">CZ</button>
+        <button type="button" data-lang="uk" aria-pressed="false">UA</button>
       </div>
       <a href="#contact" class="btn btn-fill"><span data-i18n="nav.cta">Discuss a project</span></a>
-      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+      <button class="burger" data-i18n-aria="a.menu" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
 <div id="mobile-menu" aria-hidden="true">
-  <nav class="mm-links" aria-label="Mobile">
+  <nav class="mm-links" data-i18n-aria="a.mobile" aria-label="Mobile">
     <a href="#work" style="--d:0"><small>01</small><span data-i18n="nav.work">Work</span></a>
     <a href="#services" style="--d:1"><small>02</small><span data-i18n="nav.services">Services</span></a>
     <a href="#process" style="--d:2"><small>03</small><span data-i18n="nav.process">Process</span></a>
@@ -526,10 +526,10 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
   </nav>
   <div class="mm-foot">
     <span class="mm-label" data-i18n="mm.lang">Language</span>
-    <div class="lang lang-lg" role="group" aria-label="Language">
+    <div class="lang lang-lg" role="group" data-i18n-aria="mm.lang" aria-label="Language">
       <button type="button" data-lang="en" aria-pressed="true">English</button>
-      <button type="button" data-lang="uk" aria-pressed="false">Українська</button>
       <button type="button" data-lang="cs" aria-pressed="false">Čeština</button>
+      <button type="button" data-lang="uk" aria-pressed="false">Українська</button>
     </div>
     <a href="#contact" class="btn btn-fill"><span data-i18n="nav.cta">Discuss a project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     <a class="mm-mail" href="mailto:lenasorochenk@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>lenasorochenk@gmail.com</a>
@@ -549,17 +549,17 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
       </div>
     </div>
     <div class="hero-art">
-      <button type="button" class="hero-main" data-project="lake" data-index="1" aria-label="Open Mountain Lake Retreat" style="border:0;padding:0;cursor:pointer;background:var(--dark)">
-        <img src="photo/thumbs/pansion/photo_2026-11-21_18-13-40.jpg" srcset="photo/thumbs/pansion/photo_2026-11-21_18-13-40.jpg 521w, photo/pansion/photo_2026-11-21_18-13-40.jpg 927w" sizes="(max-width:768px) 84vw, 40vw" alt="Timber guesthouse above a mountain lake, painted visualization" width="927" height="1280" fetchpriority="high">
+      <button type="button" class="hero-main" data-project="lake" data-index="1" data-i18n-open="lake" aria-label="Open Mountain Lake Retreat" style="border:0;padding:0;cursor:pointer;background:var(--dark)">
+        <img src="photo/thumbs/pansion/photo_2026-11-21_18-13-40.jpg" srcset="photo/thumbs/pansion/photo_2026-11-21_18-13-40.jpg 521w, photo/pansion/photo_2026-11-21_18-13-40.jpg 927w" sizes="(max-width:768px) 84vw, 40vw" alt="Timber guesthouse above a mountain lake, painted visualization" data-i18n-alt="alt.hero1" width="927" height="1280" fetchpriority="high">
       </button>
-      <button type="button" class="hero-plan" data-project="plans" data-index="0" aria-label="Open Rendered Floor Plans" style="padding:0;cursor:pointer;background:var(--cream)">
-        <img src="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-26.jpg" srcset="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-26.jpg 720w, photo/2d%20plans/photo_2026-11-21_18-13-26.jpg 1280w" sizes="(max-width:768px) 46vw, 20vw" alt="Rendered floor plan of a two-bedroom apartment" width="1280" height="926">
+      <button type="button" class="hero-plan" data-project="plans" data-index="0" data-i18n-open="plans" aria-label="Open Rendered Floor Plans" style="padding:0;cursor:pointer;background:var(--cream)">
+        <img src="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-26.jpg" srcset="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-26.jpg 720w, photo/2d%20plans/photo_2026-11-21_18-13-26.jpg 1280w" sizes="(max-width:768px) 46vw, 20vw" alt="Rendered floor plan of a two-bedroom apartment" data-i18n-alt="alt.hero2" width="1280" height="926">
       </button>
       <div class="hero-badge"><i class="fa-solid fa-circle" aria-hidden="true"></i><span data-i18n="hero.badge">Booking 2027 projects</span></div>
       <div class="hero-tag t1"><small data-i18n="hero.tagk">Featured</small><span data-i18n="pj.lake.t">Mountain Lake Retreat</span></div>
     </div>
   </div>
-  <div class="scroll-cue" aria-hidden="true">Scroll</div>
+  <div class="scroll-cue" aria-hidden="true"><span data-i18n="a.scroll">Scroll</span></div>
   <div class="hero-shade" aria-hidden="true"></div>
 </header>
 
@@ -567,7 +567,7 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
 <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
 
 <!-- FACTS -->
-<section id="facts" aria-label="At a glance">
+<section id="facts" data-i18n-aria="a.glance" aria-label="At a glance">
   <div class="wrap facts">
     <div class="fact"><div class="num"><span class="counter" data-target="6">6</span></div><div class="lbl" data-i18n="fact.1">Featured projects</div></div>
     <div class="fact"><div class="num"><span class="counter" data-target="57">57</span></div><div class="lbl" data-i18n="fact.2">Drawings &amp; renders in this portfolio</div></div>
@@ -587,31 +587,31 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
     </div>
     <div class="work-grid">
       <button type="button" class="card wide" data-project="hotel" data-aos="fade-up">
-        <div class="card-media"><img src="photo/thumbs/hotel/photo_2026-11-21_18-13-14.jpg" srcset="photo/thumbs/hotel/photo_2026-11-21_18-13-14.jpg 720w, photo/hotel/photo_2026-11-21_18-13-14.jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 58vw" alt="Terraced hotel balconies overlooking a beach and pools" loading="lazy" width="1280" height="839" decoding="async">
+        <div class="card-media"><img src="photo/thumbs/hotel/photo_2026-11-21_18-13-14.jpg" srcset="photo/thumbs/hotel/photo_2026-11-21_18-13-14.jpg 720w, photo/hotel/photo_2026-11-21_18-13-14.jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 58vw" alt="Terraced hotel balconies overlooking a beach and pools" data-i18n-alt="alt.hotel" loading="lazy" width="1280" height="839" decoding="async">
           <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>6</span>
           <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
         <div class="card-body"><span class="card-cat" data-i18n="pj.hotel.c">Hospitality · Architecture &amp; interiors</span><h3 data-i18n="pj.hotel.t">Seaside Resort Hotel</h3><p data-i18n="pj.hotel.d">A terraced beach hotel: the masterplan, pool gardens, the lobby lounge and a double-height suite.</p></div>
       </button>
       <button type="button" class="card mid" data-project="h92" data-aos="fade-up" data-aos-delay="80">
-        <div class="card-media"><img src="photo/thumbs/Hotel%2092/photo_2026-11-21_18-14-04.jpg" srcset="photo/thumbs/Hotel%2092/photo_2026-11-21_18-14-04.jpg 570w, photo/Hotel%2092/photo_2026-11-21_18-14-04.jpg 1014w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 42vw" alt="Hotel 92 bar with dark wood, bottles and an arched window" loading="lazy" width="1014" height="1280" style="object-position:center 30%" decoding="async">
+        <div class="card-media"><img src="photo/thumbs/Hotel%2092/photo_2026-11-21_18-14-04.jpg" srcset="photo/thumbs/Hotel%2092/photo_2026-11-21_18-14-04.jpg 570w, photo/Hotel%2092/photo_2026-11-21_18-14-04.jpg 1014w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 42vw" alt="Hotel 92 bar with dark wood, bottles and an arched window" data-i18n-alt="alt.h92" loading="lazy" width="1014" height="1280" style="object-position:center 30%" decoding="async">
           <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>6</span>
           <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
         <div class="card-body"><span class="card-cat" data-i18n="pj.h92.c">Hospitality · Interiors</span><h3 data-i18n="pj.h92.t">Hotel 92</h3><p data-i18n="pj.h92.d">A boutique hotel in a brick townhouse, with a bar, a bakery café and a library lounge.</p></div>
       </button>
       <button type="button" class="card" data-project="lake" data-aos="fade-up">
-        <div class="card-media"><img src="photo/thumbs/pansion/photo_2026-11-21_18-13-40%20(2).jpg" srcset="photo/thumbs/pansion/photo_2026-11-21_18-13-40%20(2).jpg 720w, photo/pansion/photo_2026-11-21_18-13-40%20(2).jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 34vw" alt="Aerial view of a guesthouse village on a mountain lake" loading="lazy" width="1280" height="927" decoding="async">
+        <div class="card-media"><img src="photo/thumbs/pansion/photo_2026-11-21_18-13-40%20(2).jpg" srcset="photo/thumbs/pansion/photo_2026-11-21_18-13-40%20(2).jpg 720w, photo/pansion/photo_2026-11-21_18-13-40%20(2).jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 34vw" alt="Aerial view of a guesthouse village on a mountain lake" data-i18n-alt="alt.lake" loading="lazy" width="1280" height="927" decoding="async">
           <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>6</span>
           <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
         <div class="card-body"><span class="card-cat" data-i18n="pj.lake.c">Hospitality · Architecture</span><h3 data-i18n="pj.lake.t">Mountain Lake Retreat</h3><p data-i18n="pj.lake.d">A guesthouse village on a mountain lake: the site plan, timber cabins and glass-walled common rooms.</p></div>
       </button>
       <button type="button" class="card" data-project="wood" data-aos="fade-up" data-aos-delay="80">
-        <div class="card-media"><img src="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-38.jpg" srcset="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-38.jpg 720w, photo/home%20in%20wood/photo_2026-11-21_18-13-38.jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 34vw" alt="Modern two-storey house among misty pine trees" loading="lazy" width="1280" height="777" decoding="async">
+        <div class="card-media"><img src="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-38.jpg" srcset="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-38.jpg 720w, photo/home%20in%20wood/photo_2026-11-21_18-13-38.jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 34vw" alt="Modern two-storey house among misty pine trees" data-i18n-alt="alt.house" loading="lazy" width="1280" height="777" decoding="async">
           <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>7</span>
           <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
         <div class="card-body"><span class="card-cat" data-i18n="pj.wood.c">Residential · Architecture &amp; interiors</span><h3 data-i18n="pj.wood.t">House in the Forest</h3><p data-i18n="pj.wood.d">A family house on a wooded slope, shown in section, from the terrace and room by room.</p></div>
       </button>
       <button type="button" class="card" data-project="plans" data-aos="fade-up" data-aos-delay="160">
-        <div class="card-media"><img src="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-27.jpg" srcset="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-27.jpg 720w, photo/2d%20plans/photo_2026-11-21_18-13-27.jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 34vw" alt="Rendered floor plan of a house with garage and open living area" loading="lazy" width="1280" height="926" decoding="async">
+        <div class="card-media"><img src="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-27.jpg" srcset="photo/thumbs/2d%20plans/photo_2026-11-21_18-13-27.jpg 720w, photo/2d%20plans/photo_2026-11-21_18-13-27.jpg 1280w" sizes="(max-width:768px) 100vw, (max-width:1080px) 50vw, 34vw" alt="Rendered floor plan of a house with garage and open living area" data-i18n-alt="alt.plans" loading="lazy" width="1280" height="926" decoding="async">
           <span class="card-count"><i class="fa-regular fa-images" aria-hidden="true"></i>11</span>
           <span class="card-open"><span data-i18n="work.open">Open project</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div>
         <div class="card-body"><span class="card-cat" data-i18n="pj.plans.c">Plans · Apartments &amp; houses</span><h3 data-i18n="pj.plans.t">Rendered Floor Plans</h3><p data-i18n="pj.plans.d">Apartments and houses drawn from above, furnished and textured so every room reads at a glance.</p></div>
@@ -653,7 +653,7 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
           <li><i class="fa-solid fa-check" aria-hidden="true"></i><span data-i18n="svc.s1d">Two rounds of revisions included</span></li>
         </ul>
         <a href="#contact" class="more" data-svc="0" data-i18n="svc.more">Ask about this →</a>
-        <div class="feat-img"><img src="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-37.jpg" srcset="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-37.jpg 720w, photo/home%20in%20wood/photo_2026-11-21_18-13-37.jpg 1280w" sizes="(max-width:768px) 100vw, 40vw" alt="Living room with a cream sofa, marble wall and dark blue shelving" loading="lazy" width="1280" height="775" decoding="async"></div>
+        <div class="feat-img"><img src="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-37.jpg" srcset="photo/thumbs/home%20in%20wood/photo_2026-11-21_18-13-37.jpg 720w, photo/home%20in%20wood/photo_2026-11-21_18-13-37.jpg 1280w" sizes="(max-width:768px) 100vw, 40vw" alt="Living room with a cream sofa, marble wall and dark blue shelving" data-i18n-alt="alt.feat" loading="lazy" width="1280" height="775" decoding="async"></div>
       </article>
       <article class="service-card" data-aos="fade-up" data-aos-delay="80">
         <div class="icon-box"><i class="fa-solid fa-mug-saucer" aria-hidden="true"></i></div>
@@ -701,7 +701,7 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
   <div class="wrap about-grid">
     <div class="about-photo" data-aos="fade-up">
       <img src="photo/elena-portrait.jpg" alt="Portrait of Elena" data-i18n-alt="about.alt" loading="lazy" decoding="async" width="587" height="785">
-      <div class="about-sign">Elena<small data-i18n="about.role">Interior designer</small></div>
+      <div class="about-sign"><span data-i18n="about.name">Elena</span><small data-i18n="about.role">Interior designer</small></div>
     </div>
     <div class="about-copy">
       <p class="label" data-i18n="about.label">About me</p>
@@ -722,7 +722,7 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
 
 <!-- CTA -->
 <section id="cta">
-  <div class="ghost" aria-hidden="true">Interiors</div>
+  <div class="ghost" aria-hidden="true" data-i18n="cta.ghost">Interiors</div>
   <div class="wrap cta-inner">
     <p class="label" data-aos="fade-up" data-i18n="cta.label">Ready to start?</p>
     <h2 class="h-sec" data-aos="fade-up" data-aos-delay="80" data-i18n="cta.h">Let's draw your space before it's built.</h2>
@@ -831,11 +831,11 @@ html.lang-fading [data-i18n]{opacity:0;filter:blur(6px)}
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lb-title" aria-hidden="true">
   <div class="lb-top">
     <div class="lb-title" id="lb-title"><span id="lb-name"></span><small id="lb-count"></small></div>
-    <button type="button" class="lb-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    <button type="button" class="lb-close" data-i18n-aria="a.close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
   </div>
-  <button type="button" class="lb-prev" aria-label="Previous image"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+  <button type="button" class="lb-prev" data-i18n-aria="a.prev" aria-label="Previous image"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
   <div class="lb-stage"><img id="lb-img" alt=""></div>
-  <button type="button" class="lb-next" aria-label="Next image"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+  <button type="button" class="lb-next" data-i18n-aria="a.next" aria-label="Next image"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
   <div class="lb-thumbs" id="lb-thumbs"></div>
 </div>
 
@@ -885,6 +885,7 @@ for(let g=0;g<Math.ceil(total/PER);g++){
 const I18N={
 uk:{
 "title":"ELENA INTERIORS",
+"a.skip":"Перейти до проєктів","a.scroll":"Гортайте","cta.ghost":"Інтер'єри","about.name":"Олена","a.main":"Головне меню","a.glance":"Коротко","a.menu":"Меню","a.menuClose":"Закрити меню","a.mobile":"Мобільне меню","a.close":"Закрити","a.prev":"Попереднє фото","a.next":"Наступне фото","a.open":"Відкрити:","a.intof":"Інтер'єр {n} з {t}","alt.hero1":"Дерев'яний пансіонат над гірським озером, мальована візуалізація","alt.hero2":"Кольоровий план квартири з двома спальнями","alt.hotel":"Терасні балкони готелю з видом на пляж і басейни","alt.h92":"Бар Hotel 92 з темним деревом, пляшками й арковим вікном","alt.lake":"Вигляд згори на пансіонат-селище біля гірського озера","alt.house":"Сучасний двоповерховий будинок серед туманних сосен","alt.plans":"Кольоровий план будинку з гаражем і відкритою вітальнею","alt.feat":"Вітальня з кремовим диваном, мармуровою стіною й темно-синіми полицями",
 "nav.work":"Проєкти","nav.services":"Послуги","nav.process":"Процес","nav.about":"Про мене","nav.cta":"Обговорити проєкт","nav.top":"Нагору","mm.lang":"Мова",
 "hero.label":"Дизайн інтер'єрів і візуалізація · Чехія · Пльзень",
 "hero.h":"Простори з <em>душею</em>, намальовані ще до будівництва.",
@@ -915,11 +916,12 @@ uk:{
 "about.btn":"Розкажіть про свій простір",
 "cta.label":"Готові почати?","cta.h":"Намалюймо ваш простір ще до будівництва.","cta.sub":"Надішліть план, фото або просто ідею. Ви отримаєте безкоштовну 30-хвилинну розмову та чітку пропозицію протягом тижня.","cta.btn":"Записатися на безкоштовну розмову","cta.re":"Відповідаю протягом робочого дня · Фіксована ціна · Барселона",
 "contact.h":"Зв'язатися","contact.ready":"Маєте простір, який хочете змінити?","contact.area":"Я в Пльзені та працюю з власниками житла, архітекторами й готелями по всій Європі й за її межами.","contact.hours":"Пн–Пт, 9:00–18:00 CET","contact.loc":"Пльзень, Чехія",
-"form.name":"Ім'я та прізвище","form.email":"Email","form.service":"Що вам потрібно?","form.notsure":"Ще не знаю","form.phone":"Телефон або WhatsApp (необов'язково)","form.slots":"Вільний час · за чеським часом","form.prev":"Раніші дати","form.next":"Пізніші дати","form.picked":"Ваш дзвінок","form.clear":"Очистити","form.date":"Зручний час для дзвінка (необов'язково)","form.msg":"Розкажіть про простір (необов'язково)","form.send":"Надіслати запит →",
+"form.name":"Ім'я та прізвище","form.email":"Ел. пошта","form.service":"Що вам потрібно?","form.notsure":"Ще не знаю","form.phone":"Телефон або WhatsApp (необов'язково)","form.slots":"Вільний час · за чеським часом","form.prev":"Раніші дати","form.next":"Пізніші дати","form.picked":"Ваш дзвінок","form.clear":"Очистити","form.date":"Зручний час для дзвінка (необов'язково)","form.msg":"Розкажіть про простір (необов'язково)","form.send":"Надіслати запит →",
 "foot.tag":"Дизайн інтер'єрів і архітектурна візуалізація. Намальовано з душею в Чехії.","foot.svc":"Послуги","foot.contact":"Контакти","foot.links":"Швидкі посилання","foot.home":"Головна","foot.copy":"© 2026 Олена. Усі права захищені. · Створено з любов'ю в Чехії"
 },
 cs:{
 "title":"ELENA INTERIORS",
+"a.skip":"Přejít na projekty","a.scroll":"Posuňte","cta.ghost":"Interiéry","about.name":"Elena","a.main":"Hlavní menu","a.glance":"Ve zkratce","a.menu":"Menu","a.menuClose":"Zavřít menu","a.mobile":"Mobilní menu","a.close":"Zavřít","a.prev":"Předchozí obrázek","a.next":"Další obrázek","a.open":"Otevřít:","a.intof":"Interiér {n} z {t}","alt.hero1":"Dřevěný penzion nad horským jezerem, malovaná vizualizace","alt.hero2":"Barevný půdorys bytu se dvěma ložnicemi","alt.hotel":"Terasovité balkony hotelu s výhledem na pláž a bazény","alt.h92":"Bar Hotelu 92 s tmavým dřevem, lahvemi a obloukovým oknem","alt.lake":"Letecký pohled na penzionovou vesnici u horského jezera","alt.house":"Moderní dvoupodlažní dům mezi mlžnými borovicemi","alt.plans":"Barevný půdorys domu s garáží a otevřeným obytným prostorem","alt.feat":"Obývací pokoj s krémovou pohovkou, mramorovou stěnou a tmavě modrými policemi",
 "nav.work":"Projekty","nav.services":"Služby","nav.process":"Postup","nav.about":"O mně","nav.cta":"Probrat projekt","nav.top":"Nahoru","mm.lang":"Jazyk",
 "hero.label":"Návrhy interiérů a vizualizace · Česká republika · Plzeň",
 "hero.h":"Prostory s <em>duší</em>, nakreslené dřív, než se postaví.",
@@ -963,6 +965,9 @@ const texts=[...document.querySelectorAll('[data-i18n]')], alts=[...document.que
 const EN={title:document.title};
 texts.forEach(el=>{ if(!(el.dataset.i18n in EN)) EN[el.dataset.i18n]=el.innerHTML; });
 alts.forEach(el=>EN[el.dataset.i18nAlt]=el.alt);
+const arias=[...document.querySelectorAll('[data-i18n-aria]')];
+arias.forEach(el=>{ if(!(el.dataset.i18nAria in EN)) EN[el.dataset.i18nAria]=el.getAttribute('aria-label'); });
+Object.assign(EN,{'a.menuClose':'Close menu','a.open':'Open','a.intof':'Interior {n} of {t}'});
 I18N.en=EN;
 let lang='en';
 const tr=k=>(I18N[lang]&&I18N[lang][k]!=null)?I18N[lang][k]:EN[k];
@@ -975,6 +980,12 @@ function render(){
   document.documentElement.lang=lang;
   texts.forEach(el=>{ el.innerHTML=tr(el.dataset.i18n); });
   alts.forEach(el=>el.alt=tr(el.dataset.i18nAlt));
+  arias.forEach(el=>el.setAttribute('aria-label',tr(el.dataset.i18nAria)));
+  document.querySelectorAll('[data-i18n-open]').forEach(el=>el.setAttribute('aria-label',tr('a.open')+' '+plain('pj.'+el.dataset.i18nOpen+'.t')));
+  const fc=document.querySelectorAll('.fan-card');
+  fc.forEach(b=>b.setAttribute('aria-label',tr('a.intof').replace('{n}',+b.dataset.index+1).replace('{t}',fc.length)));
+  const bg=document.querySelector('.burger');
+  if(bg) bg.setAttribute('aria-label',tr(document.body.classList.contains('menu-open')?'a.menuClose':'a.menu'));
   document.title=tr('title');
   document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));
   buildMarquee();
@@ -1132,7 +1143,7 @@ function setMenu(open){
   if(open===document.body.classList.contains('menu-open')) return;
   document.body.classList.toggle('menu-open',open);
   burger.setAttribute('aria-expanded',String(open));
-  burger.setAttribute('aria-label',open?'Close menu':'Menu');
+  burger.setAttribute('aria-label',tr(open?'a.menuClose':'a.menu'));
   mmenu.setAttribute('aria-hidden',String(!open));
   document.body.style.overflow=open?'hidden':'';
   if(lenis){open?lenis.stop():lenis.start()}
